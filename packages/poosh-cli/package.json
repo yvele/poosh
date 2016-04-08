@@ -1,0 +1,32 @@
+{
+  "name": "poosh-cli",
+  "version": "1.0.0",
+  "description": "Poosh command line interface (cli)",
+  "repository": "https://github.com/yvele/poosh/tree/master/packages/poosh-cli",
+  "keywords": [
+    "poosh",
+    "cli",
+    "publication",
+    "publish",
+    "publisher"
+  ],
+  "author": "Merlicco Yves",
+  "license": "MIT",
+  "main": "src/index.js",
+  "files": ["lib"],
+  "bin": {
+    "poosh": "./bin/poosh.js"
+  },
+  "dependencies": {
+    "bluebird": "^3.3.4",
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "humanize-duration": "^3.7.0",
+    "lodash": "^4.7.0",
+    "log-update": "^1.0.2",
+    "loud-rejection": "^1.3.0",
+    "pretty-bytes": "^3.0.1",
+    "poosh-common": "1.0.0",
+    "poosh-core": "1.0.0"
+  }
+}

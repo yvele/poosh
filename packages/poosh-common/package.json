@@ -1,0 +1,17 @@
+{
+  "name": "poosh-common",
+  "version": "1.0.0",
+  "description": "Poosh common utility library (shared with plugins)",
+  "repository": "https://github.com/yvele/poosh/tree/master/packages/poosh-common",
+  "keywords": [
+    "poosh"
+  ],
+  "author": "Merlicco Yves",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "files": ["lib"],
+  "dependencies": {
+    "lodash": "^4.7.0",
+    "ms": "^0.7.1"
+  }
+}

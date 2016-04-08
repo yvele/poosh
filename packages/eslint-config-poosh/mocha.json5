@@ -1,0 +1,26 @@
+{
+  extends: "./base.json5",
+  env: {
+    mocha: true
+  },
+  globals: {
+    "expect": true, // https://github.com/Automattic/expect.js
+    "rewire": true // https://github.com/jhnns/rewire
+  },
+  rules: {
+    // Allow expressions like "expect(true).to.be.true;"
+    "no-unused-expressions": 0,
+
+    // Increase max nested callbacks (describe/it)
+    "max-nested-callbacks": [2, 5],
+
+    // Allow block padding (more visibility for decribe/it functions)
+    "padded-blocks": [0],
+
+    // Allow mocking functions like __set__
+    "no-underscore-dangle": 0,
+
+    // Increase max statements
+    "max-statements": [2, 30]
+  }
+}

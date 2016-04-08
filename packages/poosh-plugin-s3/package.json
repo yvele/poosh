@@ -1,0 +1,26 @@
+{
+  "name": "poosh-plugin-s3",
+  "version": "1.0.0",
+  "description": "Poosh plugin that publishes files to AWS S3",
+  "repository": "https://github.com/yvele/poosh/tree/master/packages/poosh-plugin-s3",
+  "keywords": [
+    "poosh",
+    "poosh-plugin",
+    "s3",
+    "aws",
+    "publish",
+    "publisher",
+    "sync"
+  ],
+  "author": "Merlicco Yves",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "files": ["lib"],
+  "dependencies": {
+    "aws-sdk": "^2.3.0",
+    "bluebird": "^3.3.4",
+    "joi": "^8.0.5",
+    "lodash": "^4.7.0",
+    "poosh-common": "1.0.0"
+  }
+}

@@ -1,0 +1,3 @@
+{
+  "extends": "poosh/node.json5"
+}

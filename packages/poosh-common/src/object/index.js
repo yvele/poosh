@@ -1,0 +1,1 @@
+export compact from "./compact";

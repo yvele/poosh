@@ -1,0 +1,7 @@
+{
+  extends: "./base.json5",
+  env: {
+    node: true,
+    es6: true
+  }
+}

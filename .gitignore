@@ -1,0 +1,15 @@
+# Logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Build
+/packages/*/lib
+
+# Misc
+.DS_Store

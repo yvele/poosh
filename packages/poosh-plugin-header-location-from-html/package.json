@@ -1,0 +1,19 @@
+{
+  "name": "poosh-plugin-header-location-from-html",
+  "version": "1.0.0",
+  "description": "Poosh plugin that generates location HTTP headers from HTML content",
+  "repository": "https://github.com/yvele/poosh/tree/master/packages/poosh-plugin-header-location-from-html",
+  "keywords": [
+    "poosh",
+    "poosh-plugin",
+    "header",
+    "headers"
+  ],
+  "author": "Merlicco Yves",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "files": ["lib"],
+  "dependencies": {
+    "cheerio": "^0.20.0"
+  }
+}
