@@ -13,6 +13,7 @@
     "clean:test": "./scripts/clean-test.sh",
     "coverage": "./scripts/coverage.sh",
     "outdated": "./scripts/outdated.sh",
+    "publish": "./scripts/publish.sh",
     "style": "./scripts/style.sh",
     "test": "./scripts/test.sh",
     "validate": "npm run style && npm run test"
