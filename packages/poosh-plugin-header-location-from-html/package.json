@@ -12,9 +12,6 @@
   "author": "Merlicco Yves",
   "license": "MIT",
   "main": "lib/index.js",
-  "files": [
-    "lib"
-  ],
   "dependencies": {
     "cheerio": "^0.20.0"
   }

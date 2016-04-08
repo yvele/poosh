@@ -8,10 +8,5 @@
     "eslint"
   ],
   "author": "Merlicco Yves",
-  "license": "MIT",
-  "files": [
-    "base.json5",
-    "node.json5",
-    "mocha.json5"
-  ]
+  "license": "MIT"
 }

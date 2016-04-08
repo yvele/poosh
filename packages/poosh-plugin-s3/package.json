@@ -15,9 +15,6 @@
   "author": "Merlicco Yves",
   "license": "MIT",
   "main": "lib/index.js",
-  "files": [
-    "lib"
-  ],
   "dependencies": {
     "aws-sdk": "^2.3.0",
     "bluebird": "^3.3.4",
