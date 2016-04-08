@@ -9,7 +9,7 @@
 Install the CLI and the S3 plugin:
 
 ```shell
-$ npm install -g poosh-cli poosh-plugin-s3
+> npm install -g poosh-cli poosh-plugin-s3
 ```
 
 Create a .poosh.json5 file (yep it's [json5](http://json5.org/)) at the root of your project:
@@ -46,7 +46,7 @@ You can now publish:
 Or sync if you want to delete remote files that are locally missing:
 
 ```shell
-$ poosh sync
+> poosh sync
 ```
 
 ## License
