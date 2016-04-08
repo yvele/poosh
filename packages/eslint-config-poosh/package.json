@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-poosh",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ESLint configurations for Poosh",
   "repository": "https://github.com/yvele/poosh/tree/master/packages/eslint-config-poosh",
   "keywords": [
