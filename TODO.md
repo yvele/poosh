@@ -29,7 +29,6 @@
 - Const nazification?
 - Use bluebird via babel
 - Use private fields? https://github.com/zenparsing/es-abstract-refs
-- Is babel-polyfill nicely located?
 - ValidationError (that can be filtered in cli, etc..)
 - Code coverage does not take all src into account
    - http://stackoverflow.com/questions/33621079/running-mocha-istanbul-babel

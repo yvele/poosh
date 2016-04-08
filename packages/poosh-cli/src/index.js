@@ -1,6 +1,6 @@
-import util from "util";
-import "poosh-core"; // Load babel-polyfill
+import "babel-polyfill";
 import "loud-rejection/register"; // Make promises to fail loudly
+import util from "util";
 import main from "./main";
 
 function outputError (err: Object) {
