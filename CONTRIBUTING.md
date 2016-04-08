@@ -6,7 +6,7 @@
 
 ## <a name="issue"></a> Found an Issue?
 If you find a bug in the source code or a mistake in the documentation, you can help us by
-submitting an issue to the [GitHub Repository][https://github.com/yvele/poosh]. Even better you can submit a Pull Request with a fix.
+submitting an issue to the [GitHub Repository](https://github.com/yvele/poosh). Even better you can submit a Pull Request with a fix.
 
 ## <a name="commit"></a> Git Commit Guidelines
 
