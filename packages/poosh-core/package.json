@@ -9,7 +9,9 @@
   "author": "Merlicco Yves",
   "license": "MIT",
   "main": "lib/index.js",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "dependencies": {
     "bluebird": "^3.3.4",
     "crc": "^3.4.0",

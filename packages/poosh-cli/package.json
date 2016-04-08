@@ -13,7 +13,9 @@
   "author": "Merlicco Yves",
   "license": "MIT",
   "main": "src/index.js",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "bin": {
     "poosh": "./bin/poosh.js"
   },
