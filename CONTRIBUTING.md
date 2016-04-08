@@ -6,12 +6,11 @@
 
 ## <a name="issue"></a> Found an Issue?
 If you find a bug in the source code or a mistake in the documentation, you can help us by
-submitting an issue to our [GitHub Repository][github]. Even better you can submit a Pull Request
-with a fix.
+submitting an issue to the [GitHub Repository][https://github.com/yvele/poosh]. Even better you can submit a Pull Request with a fix.
 
 ## <a name="commit"></a> Git Commit Guidelines
 
-* Write meaningful and straightforward commit summaries.
+Write meaningful and straightforward commit summaries.
 
 ```sh
 # Bad
@@ -21,7 +20,7 @@ git commit assets -m 'change something' # ORLY? What change?
 git commit assets -m 'style(css): Switch `reset.css` to `normalize.css`'
 ```
 
-* Avoid long commit summaries by limiting the maximum characters to `50`.
+Avoid long commit summaries by limiting the maximum characters to `50`.
 
 > Detailed descriptions should go on the commit message.
 
@@ -33,7 +32,7 @@ git commit assets/javascripts -m 'Add `FIXME` note to dropdown module because it
 git commit assets/javascripts -m 'style(dropdown): Add `FIXME` note to dropdown module'
 ```
 
-* Write commit summaries in the imperative, present tense.
+Write commit summaries in the imperative, present tense.
 
 ```sh
 # Bad
@@ -49,7 +48,7 @@ git commit scripts -m 'Fixing CI integration'
 git commit scripts -m 'fix(ci): Fix CI integration'
 ```
 
-* Use proper english writing on commits.
+Use proper english writing on commits.
 
 > Because SCM is also code documentation.
 
