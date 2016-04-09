@@ -21,7 +21,7 @@ function initCommander () {
     argv.parseForce);
 
   commander.option("-v, --verbose",
-    "get more detailled output on every files",
+    "get more detailed output on every files",
     (v, total) => total + 1,
     0);
 
@@ -31,7 +31,7 @@ function initCommander () {
   commander.on("--help", () => {
     // eslint-disable-next-line no-console
     console.log("  Commands:\n"
-      + "\n    upload [options]        default command"
+      + "\n    upload [options]        (default command)"
       + "\n    sync [options]"
       + "\n\n"
       + "  Examples:\n"
