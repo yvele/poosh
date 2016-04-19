@@ -1,5 +1,8 @@
 # eslint-config-poosh
+
 > [Poosh](https://github.com/yvele/poosh) command line interface (cli)
+
+[![npm version](https://badge.fury.io/js/poosh-cli.svg)](https://badge.fury.io/js/poosh-cli)
 
 ## Options
 
