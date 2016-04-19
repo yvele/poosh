@@ -3,7 +3,6 @@ sudo: false
 
 node_js:
   - node
-  - iojs
 
 before_script:
   - npm run bootstrap
