@@ -150,12 +150,12 @@ Greatest values are uploaded first.
 
 ### Automatic Redirection
 
-Using the [header-location-from-content](packages/poosh-plugin-header-location-from-content) plugin,
+Using the [header-location-from-html](packages/poosh-plugin-header-location-from-html) plugin,
 the `location` HTTP header can be automatically generated from a file HTML [http-equiv](http://www.w3schools.com/tags/att_meta_http_equiv.asp) meta tag:
 
 ```json5
 {
-  plugins: ["header-location-from-content"],
+  plugins: ["header-location-from-html"],
   each: [{
     match     : "**/*.html",
     headers   : { location: { fromContent: true } }
