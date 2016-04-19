@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "poosh",
-  "description": "Publish and sync local files to some remote endpoint",
+  "description": "Publish local files to virtually any remote endpoint",
   "author": "Merlicco Yves",
   "license": "MIT",
   "scripts": {
