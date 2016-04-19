@@ -10,6 +10,7 @@
 
 ## poosh-core
 
+- Multiple glob patterns, like `['foo/*.js', '!bar.js']`
 - Each: match + ignore:true = file is ignored (not deleted) ?
 - Option validation dedicated error with nice messages (+cli)
 - Options presets
