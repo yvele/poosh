@@ -2,6 +2,7 @@
 
 > Publish local files to virtually any remote endpoint
 
+![Travis](https://img.shields.io/travis/yvele/poosh/master.svg?label=travis)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ![poosh cli screenshot](media/screenshot-publish.png)
