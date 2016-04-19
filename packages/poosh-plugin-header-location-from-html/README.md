@@ -6,7 +6,19 @@
 
 ## Sample
 
-If your local looks like that:
+With the following options:
+
+```json5
+{
+  plugins: ["header-location-from-content"],
+  each: [{
+    match     : "**/*.html",
+    headers   : { location: { fromContent: true } }
+  }]
+}
+```
+
+A local file looking like that:
 
 ```html
 <!DOCTYPE html>
@@ -19,7 +31,7 @@ If your local looks like that:
 </html>
 ```
 
-Then the plugin will automatically generates a location HTTP header for it.
+Will be uploaded with a `location` HTTP header set to `http://mysite.tld/posts/my-original-url`.
 
 ## Dependencies
 
