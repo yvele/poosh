@@ -10,7 +10,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "lodash": "^4.7.0",
+    "lodash": "^4.11.1",
     "ms": "^0.7.1"
   }
 }
