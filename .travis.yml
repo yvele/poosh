@@ -6,3 +6,5 @@ node_js:
 
 before_script:
   - npm run bootstrap
+
+script: npm run validate
