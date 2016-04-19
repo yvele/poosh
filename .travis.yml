@@ -4,7 +4,13 @@ sudo: false
 node_js:
   - node
 
-before_script:
+install:
+  - npm install -g codecov
   - npm run bootstrap
 
-script: npm run validate
+script:
+  - npm run style
+  - npm run coverage
+
+after_success:
+  - codecov
