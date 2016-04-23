@@ -67,17 +67,20 @@ Complex sample with multiple remote options:
   },
 
   each : [{
-    match   : "**/*.{html}", // "remoteId1" will be used
+    // Remote "remoteId1" will be used
+    match   : "**/*.{html}",
     remote  : "remoteId1"
   }, {
-    match   : "**/*.{css,js}", // "remoteId2" will be used
+    // Remote "remoteId2" will be used
+    match   : "**/*.{css,js}",
     remote  : {
       id            : "remoteId2",
       acl           : "private",
       storageClass  : "REDUCED_REDUNDANCY"
     }
   }, {
-    match   : "**/*.{jpg,png}" // Remote "default" will be used
+    // Remote "default" will be used
+    match   : "**/*.{jpg,png}"
   }]
 }
 ```
