@@ -20,7 +20,7 @@
   "homepage": "https://github.com/yvele/poosh",
   "main": "lib/index.js",
   "dependencies": {
-    "aws-sdk": "^2.3.4",
+    "aws-sdk": "^2.3.5",
     "bluebird": "^3.3.5",
     "joi": "^8.0.5",
     "lodash": "^4.11.1",
