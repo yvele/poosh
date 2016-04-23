@@ -48,7 +48,7 @@ Complex sample with multiple remote options:
   baseDir : "./deploy",
 
   remote  : {
-    default: {
+    "default": {
       type      : "s3",
       region    : "us-west-2",
       bucket    : "my-first-bucket",
