@@ -1,5 +1,5 @@
 import merge from "poosh-common/lib/options/merge";
-import { GlobMatcher } from "./helpers/GlobMatcher";
+import GlobMatcher from "./helpers/GlobMatcher";
 
 export default class FileOptionsProvider {
 

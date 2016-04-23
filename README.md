@@ -79,6 +79,16 @@ local files that needs to be uploaded can be selected and configured with a [glo
 }
 ```
 
+or and array of patterns
+
+```json5
+{
+  each: [{
+    match: ["*.*", "!*.txt"]
+  }]
+}
+```
+
 Some supported glob features are:
 
 | Feature | Example

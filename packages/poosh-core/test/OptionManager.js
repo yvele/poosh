@@ -2,7 +2,6 @@ import OptionManager from "../lib/OptionManager";
 
 describe("OptionManager", () => {
 
-  // normalizeCacheRemote
   describe("normalizeCacheRemote", () => {
     const normalizeCacheRemote = OptionManager.__get__("normalizeCacheRemote");
 
@@ -27,7 +26,6 @@ describe("OptionManager", () => {
 
   });
 
-  // normalizeRemote
   describe("normalizeRemote", () => {
     const normalizeRemote = OptionManager.__get__("normalizeRemote");
     const PooshError = OptionManager.__get__("PooshError");

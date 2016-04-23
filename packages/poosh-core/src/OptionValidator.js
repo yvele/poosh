@@ -64,7 +64,7 @@ function createSchema (): Object {
     }).unknown(),
 
     each: Joi.array().items(Joi.object({
-      match    : stringTrim,
+      match    : [stringTrim, Joi.array().items(stringTrim)],
       priority : Joi.number().allow(null),
       gzip     : Joi.boolean(),
       headers  : headersSchema,
