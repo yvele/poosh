@@ -11,7 +11,7 @@
 
 ## Short Example
 
-Install [poosh CLI](packages/poosh-cli) and [S3 plugin](packages/poosh-plugin-s3):
+Install [poosh CLI][poosh-cli] and [S3 plugin][poosh-plugin-s3]:
 
 ```shell
 > npm install -g poosh-cli poosh-plugin-s3
@@ -61,6 +61,7 @@ Or sync if you want to delete remote files that has been locally removed:
 [HTTP Headers](#http-headers) |
 [Upload Ordering](#upload-ordering) |
 [Automatic Redirection](#automatic-redirection) |
+[Cache](#cache) |
 [Simulation](#simulation)
 
 Poosh allow you to upload and sync local files to virtually any remote destination.
@@ -165,10 +166,31 @@ the `location` HTTP header can be automatically generated from a file HTML [http
 }
 ```
 
+### Cache
+
+When local files are processed, a `.poosh.cache` file is generated next to the `.poosh.json5` configuration file.
+
+Consecutive runs of poosh will use this file to avoid unnecessary remote requests.
+
+[Poosh CLI][poosh-cli] can be used with the `--force` options to bypass cache lookup:
+
+```shell
+> poosh --force cache
+```
+
+The cache file is written after each individual file processing
+(using the great [NeDB append-only format](https://github.com/louischatriot/nedb#persistence)).
+Cache file stores 3 separate hash keys for each processed local file:
+  - File content hash key
+  - HTTP headers hash key
+  - Remote options hash key
+
+This is useful to poosh to detect distinctive local changes in either file content, HTTP headers and remote options.
+
 ### Simulation
 
-Using the [CLI](packages/poosh-cli) `--readonly` option,
-no changes will be maid and output will show potential changes:
+Using the [CLI][poosh-cli] `--readonly` option,
+no changes will be maid while output still showing potential changes:
 
 ```shell
 > poosh --readonly
@@ -297,29 +319,6 @@ Options used to control file's HTTP headers.
   </tr>
 </table>
 
-
-## License
-
-The MIT License (MIT)
-
-Copyright (c) 2016 Yves Merlicco
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
 [glob]: https://github.com/jonschlinkert/micromatch#features
+[poosh-cli]: packages/poosh-cli
+[poosh-plugin-s3]: packages/poosh-plugin-s3
