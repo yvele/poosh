@@ -4,6 +4,10 @@
   "description": "Publish local files to virtually any remote endpoint",
   "author": "Merlicco Yves",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yvele/poosh/issues"
+  },
+  "homepage": "https://github.com/yvele/poosh",
   "scripts": {
     "bootstrap": "./scripts/bootstrap.sh",
     "build": "./scripts/build.sh sourceonly",

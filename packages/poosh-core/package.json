@@ -8,6 +8,10 @@
   ],
   "author": "Merlicco Yves",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yvele/poosh/issues"
+  },
+  "homepage": "https://github.com/yvele/poosh",
   "main": "lib/index.js",
   "dependencies": {
     "bluebird": "^3.3.5",

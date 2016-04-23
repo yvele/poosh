@@ -6,6 +6,10 @@
   "keywords": [],
   "author": "Merlicco Yves",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yvele/poosh/issues"
+  },
+  "homepage": "https://github.com/yvele/poosh",
   "bin": {
     "poosh": "./cli.js"
   }

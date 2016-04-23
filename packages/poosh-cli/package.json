@@ -12,6 +12,10 @@
   ],
   "author": "Merlicco Yves",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yvele/poosh/issues"
+  },
+  "homepage": "https://github.com/yvele/poosh",
   "main": "src/index.js",
   "bin": {
     "poosh": "./bin/poosh.js"

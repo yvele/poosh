@@ -8,5 +8,9 @@
     "eslint"
   ],
   "author": "Merlicco Yves",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yvele/poosh/issues"
+  },
+  "homepage": "https://github.com/yvele/poosh"
 }
