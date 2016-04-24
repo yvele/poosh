@@ -2,7 +2,8 @@
 
 > [Poosh](https://github.com/yvele/poosh) plugin that generates location HTTP headers from HTML content
 
-[![npm version](https://badge.fury.io/js/poosh-cli.svg)](https://badge.fury.io/js/poosh-plugin-header-location-from-html)
+[![npm version](https://img.shields.io/npm/v/poosh-plugin-header-location-from-html.svg)](https://www.npmjs.com/package/poosh-plugin-header-location-from-html)
+[![source code](https://img.shields.io/badge/source%20code-master-blue.svg)](https://github.com/yvele/poosh/tree/master/packages/poosh-plugin-header-location-from-html)
 
 ## Sample
 

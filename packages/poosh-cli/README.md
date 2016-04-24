@@ -2,7 +2,8 @@
 
 > [Poosh](https://github.com/yvele/poosh) command line interface (cli)
 
-[![npm version](https://badge.fury.io/js/poosh-cli.svg)](https://badge.fury.io/js/poosh-cli)
+[![npm version](https://img.shields.io/npm/v/poosh-cli.svg)](https://www.npmjs.com/package/poosh-cli)
+[![source code](https://img.shields.io/badge/source%20code-master-blue.svg)](https://github.com/yvele/poosh/tree/master/packages/poosh-cli)
 
 ## Help
 

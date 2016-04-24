@@ -2,7 +2,8 @@
 
 > [Poosh](https://github.com/yvele/poosh) plugin that publishes files to AWS S3
 
-[![npm version](https://badge.fury.io/js/poosh-cli.svg)](https://badge.fury.io/js/poosh-plugin-s3)
+[![npm version](https://img.shields.io/npm/v/poosh-plugin-s3.svg)](https://www.npmjs.com/package/poosh-plugin-s3)
+[![source code](https://img.shields.io/badge/source%20code-master-blue.svg)](https://github.com/yvele/poosh/tree/master/packages/poosh-plugin-s3)
 
 ## Samples
 
