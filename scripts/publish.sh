@@ -11,5 +11,5 @@ npm run validate
 npm run clean:build
 npm run build
 
-# 3. Publication
+# 3. Publication (will bumb all packages versions + dependencies)
 lerna publish
