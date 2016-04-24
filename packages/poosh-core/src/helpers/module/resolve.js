@@ -1,3 +1,4 @@
+import path from "path";
 import Module from "module";
 import getPrefix from "../npm/getPrefix";
 import pathExists from "../fs/pathExists";
@@ -31,7 +32,7 @@ function resolveRelative (loc: string, relative: string): ?string {
  * Resolve a globally installed module from it's name.
  */
 function resolveGlobal (moduleName: string): ?string {
-  let modulePath = `${getPrefix()}/lib/node_modules/${moduleName}`;
+  let modulePath = path.join(getPrefix(), "lib", "node_modules", moduleName);
   return pathExists(modulePath) ? modulePath : null;
 }
 

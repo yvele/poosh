@@ -1,7 +1,8 @@
+import path from "path";
 import Datastore from "./promisified/nedb";
 
-// TODO: rel? absolute? huh?
-const DS_DEFAULT_PERSISTANCE_FILE = "./.poosh.cache";
+// TODO: Relative or absolute?
+const DS_DEFAULT_PERSISTANCE_FILE = path.join(".", ".poosh.cache");
 const DS_UPDATE_OPTS = { upsert: true };
 
 /**
