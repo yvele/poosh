@@ -1,6 +1,6 @@
 {
   "name": "poosh-common",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Poosh common utility library (shared with plugins)",
   "repository": "https://github.com/yvele/poosh/tree/master/packages/poosh-common",
   "keywords": [
