@@ -1,6 +1,6 @@
 import Joi from "joi";
 import PooshError from "poosh-common/lib/errors/PooshError";
-import resolve from "../module/resolve";
+import resolve from "poosh-common/lib/module/resolve";
 
 const NAME_PREFIX = "poosh-plugin-";
 
