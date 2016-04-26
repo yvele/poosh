@@ -1,6 +1,6 @@
 {
   "name": "poosh-core",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Poosh core library",
   "repository": "https://github.com/yvele/poosh/tree/master/packages/poosh-core",
   "keywords": [
