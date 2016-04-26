@@ -31,10 +31,15 @@ function createSchema (): Object {
     ]
   });
 
-  const remoteSchema = Joi.object().pattern(/^[a-z0-9]+$/i, Joi.object({
+  /*const remoteSchema = Joi.object().pattern(/^[a-z0-9]+$/i, Joi.object({
     type: stringTrim.required(),
     basePath: stringTrim
-  }).unknown());
+  }).unknown());*/
+
+  const remoteSchema = Joi.object({
+    type: stringTrim.required(),
+    basePath: stringTrim
+  }).unknown();
 
   const schema = Joi.object({
     plugins: Joi.array().unique().items(
@@ -42,10 +47,15 @@ function createSchema (): Object {
       stringTrim.lowercase().min(1).max(214).required()
     ),
 
-    baseDir     : stringTrim.required(),
-    remote      : Joi.alternatives().try(stringTrim, remoteSchema).required(),
-    concurrency : Joi.number().integer().positive().min(1),
-    presets     : Joi.object(),
+    baseDir: stringTrim.required(),
+
+    remote: Joi.alternatives().try(
+      stringTrim,
+      remoteSchema,
+      Joi.object().pattern(/^[a-z0-9]+$/i, remoteSchema)
+    ).required(),
+
+    concurrency: Joi.number().integer().positive().min(1),
 
     readonly: [Joi.boolean(), Joi.object({
       cache : Joi.boolean(),
@@ -97,9 +107,10 @@ export default class OptionValidator {
 
   /**
    * @param options Raw options.
+   * @param plugins
    * @returns Error if validation failed.
    */
-  static validateSync (options, plugins): ?Object {
+  static validateSync (options: Object, plugins: Object): ?Object {
 
     // 1. Get a brand new schema
     let schema = createSchema();
