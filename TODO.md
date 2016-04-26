@@ -10,7 +10,6 @@
 
 ## poosh-core
 
-- Multiple glob patterns, like `['foo/*.js', '!bar.js']`
 - Each: match + ignore:true = file is ignored (not deleted) ?
 - Option validation dedicated error with nice messages (+cli)
 - Options presets
@@ -19,6 +18,7 @@
 - Config possible in package.json as eslint do (an .eslintrc.* file or an eslintConfig field in a package.json)
    - https://github.com/eslint/eslint/blob/master/conf/cli-options.js
 - Add tests on cache & config files resolution
+- Switch from NeDB to LokiJS (lighter footprint) ?
 
 ## poosh-plugin-s3
 
