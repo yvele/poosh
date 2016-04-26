@@ -11,7 +11,7 @@ With the following options:
 
 ```json5
 {
-  plugins: ["header-location-from-content"],
+  plugins: ["header-location-from-html"],
   each: [{
     match     : "**/*.html",
     headers   : { location: { fromContent: true } }
