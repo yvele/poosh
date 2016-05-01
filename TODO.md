@@ -19,6 +19,9 @@
    - https://github.com/eslint/eslint/blob/master/conf/cli-options.js
 - Add tests on cache & config files resolution
 - Switch from NeDB to LokiJS (lighter footprint) ?
+- Add support for month and week units in duration parsing.
+   - See https://github.com/rauchg/ms.js/issues/57
+   - See https://github.com/yvele/poosh/issues/2
 
 ## poosh-plugin-s3
 
