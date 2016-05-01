@@ -34,7 +34,7 @@ Create a `.poosh.json5` file at the root of your project:
   }, {
     match     : "**/*.{jpg,png,gif,ico}",
     gzip      : false,
-    headers   : { "cache-control": { maxAge: "6 months" } }
+    headers   : { "cache-control": { maxAge: "1 year" } }
   }, {
     match     : "**/*.html",
     priority  : -1
@@ -256,9 +256,9 @@ Options used to control file's HTTP headers.
           <a href="https://github.com/rauchg/ms.js">ms</a>.
           For example
           <code>"60 days"</code>,
-          <code>"2.5 hrs"</code>,
-          <code>"1 month"</code>,
-          <code>"2h"</code>,
+          <code>"2.5 hours"</code>,
+          <code>"1 year"</code>,
+          <code>"35 minutes"</code>,
           etc.
         </li>
         <li>
