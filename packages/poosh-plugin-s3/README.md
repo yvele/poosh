@@ -7,7 +7,7 @@
 
 ## Samples
 
-A single default remote option in a single string:
+A single default remote option with a [S3 endpoint][s3-endpoint] as a single string:
 
 ```json5
 {
@@ -89,3 +89,5 @@ Complex sample with multiple remote options:
 ## Dependencies
 
 * [aws-sdk](https://github.com/aws/aws-sdk-js)
+
+[s3-endpoint]: http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region

@@ -218,7 +218,7 @@ or
 | ------------ | ------- | -------------
 | plugins      | `[]`    | List of plugins to load and use. A single plugin is designed by it's package name (with or without it's `poosh-plugin-` prefix).
 | baseDir      | `null`  | The base directory of local files. This path can either be absolute or relative (to the configuration file).
-| remote       | `null`  | The remote client or a key/value map of remote clients to use for processing files.
+| remote       | `null`  | The remote client or a key/value map of remote clients to use for processing files. See your remote plugin documentation for more information (e.g. [S3 Plugin][poosh-plugin-s3]).
 | concurrency  | `3`     | File processing concurrency.
 | each         | `[]`    | List of items used to select and process local files. Available options are described in the [each section](#each).
 
