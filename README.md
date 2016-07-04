@@ -164,7 +164,15 @@ Greatest values are uploaded first.
 ### Automatic Redirection
 
 Using the [header-location-from-html](packages/poosh-plugin-header-location-from-html) plugin,
-the `location` HTTP header can be automatically generated from a file HTML [http-equiv](http://www.w3schools.com/tags/att_meta_http_equiv.asp) meta tag:
+the `location` HTTP header can be automatically generated from a file HTML [http-equiv](http://www.w3schools.com/tags/att_meta_http_equiv.asp) meta tag.
+
+First install the plugin:
+
+```shell
+> npm install -g poosh-plugin-header-location-from-html
+```
+
+And then use it in your configuration file:
 
 ```json5
 {
