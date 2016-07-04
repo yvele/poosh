@@ -103,6 +103,15 @@ export default class RemoteClient {
    * @param file
    */
   async upload (file: Object) {
+
+    if (file.dest.statusDetails.content === RemoteStatus.Same) {
+      // If content has not changed, we can simply make make a small "self copy"
+      // that will be faster
+      let params = this._paramsProvider.getSelfCopyObjectParams(file);
+      await this._s3.copyObjectAsync(params);
+      return;
+    }
+
     let params = this._paramsProvider.getPutObjectParams(file);
     await this._s3.putObjectAsync(params);
   }

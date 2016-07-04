@@ -3,6 +3,7 @@ import pick from "lodash/pick";
 import forOwn from "lodash/forOwn";
 import joinUrl from "poosh-common/lib/url/join";
 import parseMs from "poosh-common/lib/options/parseMs";
+import RemoteStatus from "poosh-common/lib/file/RemoteStatus";
 import { HEADERS_TO_PARAMS_MAP } from "./helpers/convertion";
 import { FILE_REMOTE_TO_PARAMS_MAP } from "./helpers/convertion";
 
@@ -154,6 +155,31 @@ export default class S3ParamsProvider {
         Objects: files.map(file => this.getParamsWithKey(file))
       }
     };
+  }
+
+  /**
+   * Build S3 copyObject params to make a self copy.
+   *
+   * @param file
+   * @returns Params.
+   */
+  getSelfCopyObjectParams (file: Object): Object {
+    let params = this.getParamsWithKey(file);
+
+    // Self copy
+    params.CopySource = this._options.bucket + "/" + params.Key;
+
+    // Only append header params if something has changed
+    if (file.dest.statusDetails.headers === RemoteStatus.Different) {
+      appendParamsFromHeaders(params, file.headers);
+    }
+
+    // Only append file-remote params if something has changed
+    if (file.dest.statusDetails.remote === RemoteStatus.Different) {
+      appendParamsFromFileRemote(params, file.remote);
+    }
+
+    return params;
   }
 
   /**
