@@ -21,14 +21,14 @@
     "poosh": "./bin/poosh.js"
   },
   "dependencies": {
-    "babel-polyfill": "^6.8.0",
-    "bluebird": "^3.3.5",
+    "babel-polyfill": "^6.9.1",
+    "bluebird": "^3.4.1",
     "chalk": "^1.1.3",
     "commander": "^2.9.0",
-    "humanize-duration": "^3.7.1",
-    "lodash": "^4.12.0",
+    "humanize-duration": "^3.9.0",
+    "lodash": "^4.13.1",
     "log-update": "^1.0.2",
-    "loud-rejection": "^1.3.0",
+    "loud-rejection": "^1.6.0",
     "poosh-common": "^1.0.6",
     "poosh-core": "^1.0.7",
     "pretty-bytes": "^3.0.1"

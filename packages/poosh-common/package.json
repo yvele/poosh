@@ -14,7 +14,7 @@
   "homepage": "https://github.com/yvele/poosh",
   "main": "lib/index.js",
   "dependencies": {
-    "lodash": "^4.12.0",
+    "lodash": "^4.13.1",
     "ms": "^0.7.1"
   }
 }
