@@ -29,6 +29,11 @@
 - Add remote.endpoint (or .absoluteUrl ?)
 - AWS SDK (> v2.3.0) native support for promises https://blogs.aws.amazon.com/javascript/post/Tx3BZ2DC4XARUGG/Support-for-Promises-in-the-SDK
 
+## eslint-config-poosh
+
+- Setup generator-star-spacing when babel-eslint issue 316 will be fixed
+   - https://github.com/babel/babel-eslint/issues/316
+
 ## internal
 
 - Const nazification?
