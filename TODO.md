@@ -27,6 +27,7 @@
 
 - Add S3 required credentials to the doc (readme)
 - Add remote.endpoint (or .absoluteUrl ?)
+- AWS SDK (> v2.3.0) native support for promises https://blogs.aws.amazon.com/javascript/post/Tx3BZ2DC4XARUGG/Support-for-Promises-in-the-SDK
 
 ## internal
 
