@@ -11,7 +11,8 @@ install:
 
 script:
   - npm run style
-  - npm run coverage
+  - npm run test
+#  - npm run coverage
 
-after_success:
-  - codecov
+#after_success:
+#  - codecov
