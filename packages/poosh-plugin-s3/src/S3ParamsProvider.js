@@ -172,6 +172,15 @@ export default class S3ParamsProvider {
     // Only append header params if something has changed
     if (file.dest.statusDetails.headers === RemoteStatus.Different) {
       appendParamsFromHeaders(params, file.headers);
+
+      // ContentLength is not part of CopyObject params
+      Reflect.deleteProperty(params, "ContentLength");
+
+      // ContentType is considered a metadata
+      // https://github.com/aws/aws-sdk-js/issues/1092
+      if ("ContentType" in params) {
+        params.MetadataDirective = "REPLACE";
+      }
     }
 
     // Only append file-remote params if something has changed
