@@ -94,4 +94,4 @@ The body should include the motivation for the change and contrast this with pre
 
 ## <a name="about"></a>About
 
-Thos rules have been inspired by AngularJS [contributing page](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md) and Netshoes [styleguide](https://github.com/netshoes/styleguide).
+Those rules have been inspired by AngularJS [contributing page](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md) and Netshoes [styleguide](https://github.com/netshoes/styleguide).
