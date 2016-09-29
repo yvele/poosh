@@ -3,5 +3,5 @@
     "flow-comments",
     ["transform-builtin-extend", { "globals": ["Error"] }]
   ],
-  "presets": ["es2015", "stage-0"]
+  "presets": ["latest", "stage-0"]
 }
