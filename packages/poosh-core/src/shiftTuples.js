@@ -1,6 +1,6 @@
 import Promise from "bluebird";
 
-async function processGroup (group, iteratee, concurrency) {
+async function processGroup(group, iteratee, concurrency) {
   let mapper = async ([file, options], index) => {
 
     // Release the reference ASAP to avoid unnecessary memory pressure
@@ -19,7 +19,7 @@ async function processGroup (group, iteratee, concurrency) {
  * @param iteratee An async iteratee function.
  * @param concurrency
  */
-export default async function shiftTuples (tuples, iteratee, concurrency: number) {
+export default async function shiftTuples(tuples, iteratee, concurrency: number) {
   if (!tuples.length) {
     return;
   }

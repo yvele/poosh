@@ -9,7 +9,7 @@ import InvalidOptions from "../errors/InvalidOptions";
  * @returns Milliseconds as an integer.
  * @throws { InvalidOptions } Value cannot be parsed.
  */
-export default function parseMs (value: number|string, path?: string): number {
+export default function parseMs(value: number|string, path?: string): number {
 
   if (typeof value === "number") {
     // TODO: Throw if NaN or someting strange..

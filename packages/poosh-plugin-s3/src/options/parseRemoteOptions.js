@@ -1,7 +1,7 @@
 import trim from "lodash/trim";
 import looseParseUrl from "poosh-common/lib/url/looseParse";
 
-function parse (host: string, pathname: string): Object {
+function parse(host: string, pathname: string): Object {
   if (!host || !pathname) {
     return;
   }
@@ -31,7 +31,7 @@ function parse (host: string, pathname: string): Object {
 /**
  * Parse remote options from a single URL.
  */
-export default function parseRemoteOptions (url: string): ?Object {
+export default function parseRemoteOptions(url: string): ?Object {
   let urlObject = looseParseUrl(url);
   if (urlObject) {
     return parse(urlObject.host, urlObject.pathname);

@@ -7,19 +7,19 @@ import { HEADERS_TO_PARAMS_MAP, etagToMd5 } from "./convertion";
 
 const HEADERS_PARAMS = Object.values(HEADERS_TO_PARAMS_MAP);
 
-function isUndefinedOrNull (value: any): boolean {
+function isUndefinedOrNull(value: any): boolean {
   return value === undefined || value === null;
 }
 
-function sameToStatus (same: boolean) {
+function sameToStatus(same: boolean) {
   return same ? RemoteStatus.Same : RemoteStatus.Different;
 }
 
-export function isSameContent (file: Object, data: Object): boolean {
+export function isSameContent(file: Object, data: Object): boolean {
   return file.content.md5 === etagToMd5(data.ETag);
 }
 
-export function areSameHeaders (file: Object, data: Object): boolean {
+export function areSameHeaders(file: Object, data: Object): boolean {
   let fileHeaders = mapKeys(file.headers.values,
     (value, key) => HEADERS_TO_PARAMS_MAP[key]);
 
@@ -28,7 +28,7 @@ export function areSameHeaders (file: Object, data: Object): boolean {
   return isEqual(compactOptions(fileHeaders), compactOptions(dataHeaders));
 }
 
-export function isSameRemote (file: Object, data: Object): boolean {
+export function isSameRemote(file: Object, data: Object): boolean {
   // ACL is ignored because headObject doesn't return ACL
   // and getObjectAcl is not (yet?) handled
   return isUndefinedOrNull(file.remote.values.storageClass)
@@ -41,7 +41,7 @@ export function isSameRemote (file: Object, data: Object): boolean {
  * @param data S3 results of an head query.
  * @returns Status details object.
  */
-export function getStatusDetails (file: Object, data: Object): Object {
+export function getStatusDetails(file: Object, data: Object): Object {
   return {
     content: sameToStatus(isSameContent(file, data)),
     headers: sameToStatus(areSameHeaders(file, data)),

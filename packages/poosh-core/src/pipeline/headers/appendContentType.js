@@ -1,6 +1,6 @@
 import mime from "mime";
 
-export default function appendContentType (file) {
+export default function appendContentType(file) {
 
   if (file.headers.values["content-type"]) {
     // Value already exists

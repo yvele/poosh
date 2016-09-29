@@ -1,6 +1,6 @@
 import compact from "../../lib/options/compact";
 
-describe("compact", function () {
+describe("compact", function() {
 
   it("Should work", () => {
     compact({

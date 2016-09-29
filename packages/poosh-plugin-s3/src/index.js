@@ -7,7 +7,7 @@ import parseRemoteOptions from "./options/parseRemoteOptions";
  *
  * @returns Plugins object.
  */
-export function init () {
+export function init() {
   return {
     remote: [{
       id: "s3",

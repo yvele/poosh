@@ -8,7 +8,7 @@ import trimStart from "lodash/trimStart";
  * @param defaultProtocol
  * @returns An URL object or nothing.
  */
-export default function looseParse (value: string, defaultProtocol: ?string): Object {
+export default function looseParse(value: string, defaultProtocol: ?string): Object {
   if (!value) {
     return;
   }

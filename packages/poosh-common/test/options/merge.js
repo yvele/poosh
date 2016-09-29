@@ -1,6 +1,6 @@
 import merge from "../../lib/options/merge";
 
-describe("merge", function () {
+describe("merge", function() {
 
   it("Should mutate destination object", () => {
     let dest = {};

@@ -18,7 +18,7 @@ const CONF_FILENAME = ".poosh.json5";
  * @static
  * @private
  */
-function normalizeCacheRemote (value: Object|boolean): Object {
+function normalizeCacheRemote(value: Object|boolean): Object {
   if (value === true || !value) {
     return { cache: !!value, remote: !!value };
   }
@@ -32,7 +32,7 @@ function normalizeCacheRemote (value: Object|boolean): Object {
  * @return Normalized remote options.
  * @throws PooshError If unable to parse string.
  */
-function normalizeRemote (value: Object|string, remoteStringPlugins: Array): Object {
+function normalizeRemote(value: Object|string, remoteStringPlugins: Array): Object {
 
   // Parse string with plugins
   if (typeof value === "string") {
@@ -62,7 +62,7 @@ export default class OptionManager {
   _options: Object;
   _plugins: PluginCollection;
 
-  constructor () {
+  constructor() {
     this._options = { plugins: [] };
     this._plugins = new PluginCollection();
   }
@@ -74,7 +74,7 @@ export default class OptionManager {
    * @param dirname Directory name (used to resolve plugins relative to it).
    * @returns Poosh
    */
-  addOptions (rawOpts?: Object, dirname?: string) {
+  addOptions(rawOpts?: Object, dirname?: string) {
     if (!rawOpts) {
       return this;
     }
@@ -90,7 +90,7 @@ export default class OptionManager {
    * @param location File location. Can be either relative or absolute.
    * @returns Poosh
    */
-  addConfigFile (location?: string) {
+  addConfigFile(location?: string) {
 
     //TODO: Dedicated function!
     if (!location) {
@@ -127,7 +127,7 @@ export default class OptionManager {
    * @returns Normalized and validated options.
    * @throws Error
    */
-  getNormalized (): Object {
+  getNormalized(): Object {
 
     let plugins = this._plugins.get();
 

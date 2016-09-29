@@ -1,6 +1,6 @@
 import cheerio from "cheerio";
 
-export default function extractLocation (html: Buffer): ?string {
+export default function extractLocation(html: Buffer): ?string {
   let $ = cheerio.load(html);
 
   let refresh = $("meta[http-equiv='refresh']").attr("content");

@@ -1,7 +1,7 @@
 import should from "should";
 import pushNonFalsy from "../../lib/array/pushNonFalsy";
 
-describe("pushNonFalsy", function () {
+describe("pushNonFalsy", function() {
 
   it("Should works", () => {
     let array = [true];

@@ -29,7 +29,7 @@ const JOI_OPTIONS = {
  * @param options
  * @returns Normalized file's remote options.
  */
-export default function normalizeFileOptions (options: Object) {
+export default function normalizeFileOptions(options: Object) {
 
   options = Object.assign({}, options);
 

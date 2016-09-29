@@ -6,7 +6,7 @@
  * @param array Optional array. If not specified it will be created.
  * @returns Array
  */
-export default function pushNonFalsy (value: any, array: ?Array): ?Array {
+export default function pushNonFalsy(value: any, array: ?Array): ?Array {
   if (value) {
     array = array || [];
     array.push(value);

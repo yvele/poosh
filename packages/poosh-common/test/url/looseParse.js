@@ -2,7 +2,7 @@ import url from "url";
 import should from "should";
 import looseParse from "../../lib/url/looseParse";
 
-describe("looseParse", function () {
+describe("looseParse", function() {
 
   it("Should works with protocol", () => {
     looseParse("http://foo.com/bar").should.eql(

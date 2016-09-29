@@ -61,7 +61,7 @@ describe("OptionManager", () => {
     });
 
     it("Should throw a PooshError with an invalid string", () => {
-      (function () {
+      (function() {
         normalizeRemote("invalid", []);
       }).should.throw(PooshError);
     });

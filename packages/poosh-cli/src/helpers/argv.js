@@ -1,7 +1,7 @@
 const commands = ["sync", "upload"];
 const defaultCommand = "upload";
 
-function error (...messages: string) {
+function error(...messages: string) {
   const prefix = "\n  ";
 
   // eslint-disable-next-line no-console
@@ -11,7 +11,7 @@ function error (...messages: string) {
   process.exit(1);
 }
 
-function parseRemoteCache (val: string, mode: string): Object {
+function parseRemoteCache(val: string, mode: string): Object {
   if (val !== "remote" && val !== "cache") {
     error(
       `error: '${val}' is not a valid value for --${mode} mode.`,
@@ -25,18 +25,18 @@ function parseRemoteCache (val: string, mode: string): Object {
   };
 }
 
-export function parseReadOnly (val: string): Object {
+export function parseReadOnly(val: string): Object {
   return parseRemoteCache(val, "readonly");
 }
 
-export function parseForce (val: string): Object {
+export function parseForce(val: string): Object {
   return parseRemoteCache(val, "force");
 }
 
 /**
  * Parse comma separated values to a string array.
  */
-export function parseList (val: string): Array<string> {
+export function parseList(val: string): Array<string> {
   if (!val) {
     return [];
   }
@@ -52,7 +52,7 @@ export function parseList (val: string): Array<string> {
   return [val];
 }
 
-export function parseArgs (args: Array): Object {
+export function parseArgs(args: Array): Object {
   if (args.length > 1) {
     error("error: No more than 1 argument allowed.");
   }

@@ -8,7 +8,7 @@ const ID = "header-location-content";
  *
  * @returns Plugins object.
  */
-export function init () {
+export function init() {
   return {
     pipe: [{ id: ID, process }],
     validation: [{ id: ID, mutateJoiSchema }]

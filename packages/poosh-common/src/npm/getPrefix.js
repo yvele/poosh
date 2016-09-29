@@ -8,7 +8,7 @@ let prefixCache;
  *
  * @returns The global NPM path.
  */
-export default function getPrefix (): string {
+export default function getPrefix(): string {
   if (!prefixCache) {
     prefixCache = execSync("npm config get prefix", {
       encoding: "utf-8"

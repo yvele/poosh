@@ -6,7 +6,7 @@ import forEach from "lodash/forEach";
  * @param object Object options. Object will be mutated.
  * @returns Object.
  */
-export default function nullsToUndefined (object: Object) {
+export default function nullsToUndefined(object: Object) {
   if (object === undefined) {
     return object;
   }

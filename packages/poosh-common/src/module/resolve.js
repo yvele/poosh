@@ -10,7 +10,7 @@ const relativeModulesCache = {};
  * @param relative The directory where to resolve the module from.
  * @returns Module path or null if not found.
  */
-function resolveRelative (loc: string, relative: string): ?string {
+function resolveRelative(loc: string, relative: string): ?string {
 
   let relativeMod = relativeModulesCache[relative];
   if (!relativeMod) {
@@ -34,7 +34,7 @@ function resolveRelative (loc: string, relative: string): ?string {
  * @param moduleName Module name.
  * @returns Module path or null if not found.
  */
-function resolveGlobal (moduleName: string): ?string {
+function resolveGlobal(moduleName: string): ?string {
   let modulePath = path.join(getGlobalPath(), moduleName);
   return pathExists(modulePath) ? modulePath : null;
 }
@@ -44,7 +44,7 @@ function resolveGlobal (moduleName: string): ?string {
  * @param relative The directory where to resolve the module from.
  * @returns Module path or null if not found.
  */
-export default function (loc: string, relative: string): ?string {
+export default function(loc: string, relative: string): ?string {
   return resolveRelative(loc, relative)
     || resolveGlobal(loc);
 }

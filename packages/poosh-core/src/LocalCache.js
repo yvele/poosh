@@ -10,7 +10,7 @@ const DS_UPDATE_OPTS = { upsert: true };
 * @static
 * @private
 */
-function getQuery (file: Object): string {
+function getQuery(file: Object): string {
   return { _id: file.dest.absolute };
 }
 
@@ -18,7 +18,7 @@ export default class LocalCache {
 
   _db: Datastore;
 
-  constructor (fileName: string) {
+  constructor(fileName: string) {
     if (!fileName) {
       fileName = DS_DEFAULT_PERSISTANCE_FILE;
     }
@@ -35,7 +35,7 @@ export default class LocalCache {
    * @param file
    * @returns Hashes (content, headers and remote).
    */
-  async get (file: Object): ?Object {
+  async get(file: Object): ?Object {
     let doc = await this._db.findOneAsync(getQuery(file));
     if (doc) {
       return { content : doc.c, headers : doc.h, remote  : doc.r };
@@ -45,7 +45,7 @@ export default class LocalCache {
   /**
    * @param file
    */
-  async add (file: Object) {
+  async add(file: Object) {
 
     // Note: Field names cannot begin by '$' or contain a '.'
     let update = {
@@ -62,7 +62,7 @@ export default class LocalCache {
   /**
    *
    */
-  flush () {
+  flush() {
     this._db.persistence.compactDatafile();
   }
 
@@ -72,7 +72,7 @@ export default class LocalCache {
    * @this LocalCache
    * @private
    */
-  async remove (files: Array<Object>): number {
+  async remove(files: Array<Object>): number {
     return await this._db.removeAsync(
       { $or: files.map(getQuery) },
       { multi: true });

@@ -32,7 +32,7 @@ const AS_IS_CONSTRUCTOR_OPTIONS = [
  * @param headers
  * @returns Params.
  */
-function appendParamsFromHeaders (params: Object, headers: Object): Object {
+function appendParamsFromHeaders(params: Object, headers: Object): Object {
   if (!headers.values) {
     return;
   }
@@ -58,7 +58,7 @@ function appendParamsFromHeaders (params: Object, headers: Object): Object {
  * @param remote File remote options.
  * @returns Params.
  */
-function appendParamsFromFileRemote (params: Object, remote: Object): Object {
+function appendParamsFromFileRemote(params: Object, remote: Object): Object {
   if (!remote.values) {
     return;
   }
@@ -81,7 +81,7 @@ export default class S3ParamsProvider {
 
   _options: RemoteOptions;
 
-  constructor (options: RemoteOptions) {
+  constructor(options: RemoteOptions) {
     this._options = options;
   }
 
@@ -91,7 +91,7 @@ export default class S3ParamsProvider {
    * @param options Remote options.
    * @returns S3 constructor options.
    */
-  getConstructorOptions (): Object {
+  getConstructorOptions(): Object {
     let options = this._options;
     let ret = pick(options, AS_IS_CONSTRUCTOR_OPTIONS);
 
@@ -115,7 +115,7 @@ export default class S3ParamsProvider {
    * @param file
    * @returns Params.
    */
-  getHeadObjectParams (file: Object): Object {
+  getHeadObjectParams(file: Object): Object {
     return this.getParamsWithKey(file);
   }
 
@@ -125,7 +125,7 @@ export default class S3ParamsProvider {
    * @param file
    * @returns Params.
    */
-  getPutObjectParams (file: Object): Object {
+  getPutObjectParams(file: Object): Object {
     let params = this.getParamsWithKey(file);
     appendParamsFromHeaders(params, file.headers);
     params.Body = file.content.buffer;
@@ -138,7 +138,7 @@ export default class S3ParamsProvider {
    *
    * @returns Params.
    */
-  getListObjectsParams (): Object {
+  getListObjectsParams(): Object {
     const basePath = this._options.basePath;
     return basePath ? { Prefix: basePath } : {};
   }
@@ -149,7 +149,7 @@ export default class S3ParamsProvider {
    * @param files
    * @returnss Params.
    */
-  getDeleteObjectsParams (files: Array<Object>): Object {
+  getDeleteObjectsParams(files: Array<Object>): Object {
     return {
       Delete: {
         Objects: files.map(file => this.getParamsWithKey(file))
@@ -163,7 +163,7 @@ export default class S3ParamsProvider {
    * @param file
    * @returns Params.
    */
-  getSelfCopyObjectParams (file: Object): Object {
+  getSelfCopyObjectParams(file: Object): Object {
     let params = this.getParamsWithKey(file);
 
     // Self copy
@@ -197,7 +197,7 @@ export default class S3ParamsProvider {
    * @param file
    * @returns Params.
    */
-  getParamsWithKey (file: Object): Object {
+  getParamsWithKey(file: Object): Object {
     return {
       Key: joinUrl(this._options.basePath, file.dest.relative)
     };

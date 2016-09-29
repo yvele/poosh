@@ -15,7 +15,7 @@ export const FILE_REMOTE_TO_PARAMS_MAP = {
   storageClass  : "StorageClass"
 };
 
-export function etagToMd5 (etag: string): string {
+export function etagToMd5(etag: string): string {
   // Remove leading and trailing " characters
   return etag.substring(1, etag.length - 1);
 }

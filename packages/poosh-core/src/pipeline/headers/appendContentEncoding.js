@@ -1,4 +1,4 @@
-export default function appendContentEncoding (file) {
+export default function appendContentEncoding(file) {
 
   if (file.headers.values["content-encoding"]) {
     // Value already exists

@@ -42,7 +42,7 @@ const JOI_OPTIONS = {
  * @static
  * @private
  */
-function resolvePlugin (name: string, dirname: string): Object {
+function resolvePlugin(name: string, dirname: string): Object {
 
   // Resolve with prefix first, then without if needed
   let pluginLoc = resolve(`${NAME_PREFIX}${name}`, dirname)
@@ -86,7 +86,7 @@ function resolvePlugin (name: string, dirname: string): Object {
  * @this PluginCollection
  * @private
  */
-function addSingle (name: string, dirname: string) {
+function addSingle(name: string, dirname: string) {
 
   let plugin = resolvePlugin(name, dirname);
 
@@ -118,7 +118,7 @@ export default class PluginCollection {
 
   _plugins: Object;
 
-  constructor () {
+  constructor() {
     this._plugins = {
       remote: {},
       remoteString: [],
@@ -135,7 +135,7 @@ export default class PluginCollection {
    * @param dirname The directory where to resolve the plugin from.
    * If not specified, cwd will be taken into account.
    */
-  add (names: Array<string>, dirname: ?string) {
+  add(names: Array<string>, dirname: ?string) {
     if (!names || names.length === 0) {
       return;
     }
@@ -144,7 +144,7 @@ export default class PluginCollection {
     names.forEach(name => this::addSingle(name, dirname));
   }
 
-  get () {
+  get() {
     return this._plugins;
   }
 }

@@ -8,7 +8,7 @@ const REFRESH_INTERVAL = 700;
  * @this Logger
  * @private
  */
-function display () {
+function display() {
 
   if (this._logBuffer.length) {
     logUpdate.clear();
@@ -31,7 +31,7 @@ function display () {
  * @this Logger
  * @private
  */
-function log (line: string) {
+function log(line: string) {
   this._logBuffer.push(line);
 }
 
@@ -39,7 +39,7 @@ function log (line: string) {
  * @this Logger
  * @private
  */
-function logFile (file: Object) {
+function logFile(file: Object) {
 
   let status = this._status;
   let contentSize = file.content.size || 0;
@@ -85,7 +85,7 @@ function logFile (file: Object) {
  * @this Logger
  * @private
  */
-function logFiles (files: Array<Object>) {
+function logFiles(files: Array<Object>) {
   for (let file of files) {
     this::logFile(file);
   }
@@ -97,7 +97,7 @@ function logFiles (files: Array<Object>) {
  * @this Logger
  * @private
  */
-function onProgress (task: string, files: Array, done: number, total: number) {
+function onProgress(task: string, files: Array, done: number, total: number) {
   let status = this._status;
 
   if (task === "match") {
@@ -126,7 +126,7 @@ export default class Logger {
    * @param options Normalized options.
    * @param verbosity Verbosity.
    */
-  constructor (startTime: Date, options: Object, verbosity: ?number) {
+  constructor(startTime: Date, options: Object, verbosity: ?number) {
     this._logBuffer = [];
     this._status = {
       startTime,
@@ -143,7 +143,7 @@ export default class Logger {
   /**
    * @param poosh
    */
-  listen (poosh: Object) {
+  listen(poosh: Object) {
     this::display();
     poosh.on("progress", this::onProgress);
     this._intervalId = setInterval(this::display, REFRESH_INTERVAL);
@@ -152,7 +152,7 @@ export default class Logger {
   /**
    *
    */
-  logFinish () {
+  logFinish() {
     clearInterval(this._intervalId);
     this::display();
   }

@@ -2,9 +2,9 @@ import forEach from "lodash/forEach";
 import isArray from "lodash/isArray";
 import isObjectLike from "lodash/isObjectLike";
 
-function compactArrayCore (obj: Array, ignore: Function): ?Array {
+function compactArrayCore(obj: Array, ignore: Function): ?Array {
   let ret;
-  forEach(obj, function (value) {
+  forEach(obj, function(value) {
     // eslint-disable-next-line no-use-before-define
     const compactedValue = compact(value, ignore);
     if (compactedValue === undefined) {
@@ -20,9 +20,9 @@ function compactArrayCore (obj: Array, ignore: Function): ?Array {
   return ret;
 }
 
-function compactObjectCore (obj: Object, ignore: Function): ?Object {
+function compactObjectCore(obj: Object, ignore: Function): ?Object {
   let ret;
-  forEach(obj, function (value, key) {
+  forEach(obj, function(value, key) {
     // eslint-disable-next-line no-use-before-define
     let compactedValue = compact(value, ignore);
     if (compactedValue === undefined) {
@@ -45,7 +45,7 @@ function compactObjectCore (obj: Object, ignore: Function): ?Object {
  * @param ignore
  * @returns
  */
-export default function compact (obj: any, ignore: Function): any {
+export default function compact(obj: any, ignore: Function): any {
   if (ignore && ignore(obj)) {
     return;
   }

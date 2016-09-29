@@ -1,6 +1,6 @@
 import nullsToUndefined from "../../lib/options/nullsToUndefined";
 
-describe("nullsToUndefined", function () {
+describe("nullsToUndefined", function() {
 
   it("Should mutate object", () => {
     let obj = { a: null };

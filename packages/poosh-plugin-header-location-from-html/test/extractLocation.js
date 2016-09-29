@@ -26,7 +26,7 @@ const htmlNoRefresh = new Buffer(`<!DOCTYPE html>
   </head>
 </html>`, "utf-8");
 
-describe("extractLocation", function () {
+describe("extractLocation", function() {
 
   it("Should work", () => {
     extractLocation(html).should.eql("http://foo.com/bar.html");

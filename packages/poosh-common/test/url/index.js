@@ -1,4 +1,4 @@
-describe("url", function () {
+describe("url", function() {
   require("./join");
   require("./looseParse");
 });

@@ -13,7 +13,7 @@ const EMPTY_HASH = "0000000";
  * @param object A flat object with string values.
  * @returns Hash as a string.
  */
-export default function hash (object: Object): string {
+export default function hash(object: Object): string {
   if (!object) {
     return EMPTY_HASH;
   }

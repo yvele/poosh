@@ -1,7 +1,7 @@
 import path from "path";
 import getPrefix from "./getPrefix";
 
-function getPlatform () {
+function getPlatform() {
   return process.platform;
 }
 
@@ -14,7 +14,7 @@ function pathJoin(...args) {
  *
  * @returns Path to the global node_modules.
  */
-export default function getGlobalPath (): string {
+export default function getGlobalPath(): string {
   const prefix = getPrefix();
   const onWindows = getPlatform() === "win32";
 

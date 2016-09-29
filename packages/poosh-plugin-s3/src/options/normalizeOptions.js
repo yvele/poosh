@@ -38,7 +38,7 @@ const JOI_OPTIONS = {
  * @param options
  * @returns Normalized options.
  */
-export default function normalizeOptions (options: Object) {
+export default function normalizeOptions(options: Object) {
 
   options = Object.assign({}, options);
 

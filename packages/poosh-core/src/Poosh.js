@@ -18,7 +18,7 @@ import Pipeline from "./pipeline/Pipeline";
  * @static
  * @private
  */
-function getFileRemoteId (options: Object): string {
+function getFileRemoteId(options: Object): string {
   if (options.remote) {
     return typeof options.remote == "string"
       ? options.remote
@@ -32,7 +32,7 @@ function getFileRemoteId (options: Object): string {
  * @this Poosh
  * @private
  */
-function getFileRemoteClient (options: Object): Object {
+function getFileRemoteClient(options: Object): Object {
   let remoteId = getFileRemoteId(options) || "default";
   let remoteClient = this._remoteClientProvider.get(remoteId);
   if (!remoteClient) {
@@ -51,7 +51,7 @@ function getFileRemoteClient (options: Object): Object {
  * @this Poosh
  * @private
  */
-function emitProgress (task: string, files: Array, done: number, total: number) {
+function emitProgress(task: string, files: Array, done: number, total: number) {
 
   /**
    * Progress event.
@@ -71,7 +71,7 @@ function emitProgress (task: string, files: Array, done: number, total: number) 
  * @private
  * @fires Poosh#progress
  */
-function onDeleted (files: Array<Object>) {
+function onDeleted(files: Array<Object>) {
   if (!files) {
     return;
   }
@@ -89,7 +89,7 @@ function onDeleted (files: Array<Object>) {
  * @this Poosh
  * @private
  */
-async function processFile (file: Object, options: Object) {
+async function processFile(file: Object, options: Object) {
 
   // 0. Get remote client
   let remoteClient = this::getFileRemoteClient(options);
@@ -137,7 +137,7 @@ async function processFile (file: Object, options: Object) {
  * @private
  * @fires Poosh#progress
  */
-async function deleteUnprocessedFiles (processedDestinations: Set<string>) {
+async function deleteUnprocessedFiles(processedDestinations: Set<string>) {
   this::emitProgress("delete", null, 0, 1);
 
   let remoteClients = this._remoteClientProvider.getAll();
@@ -163,7 +163,7 @@ async function deleteUnprocessedFiles (processedDestinations: Set<string>) {
  * @returns Set of processed destinations.
  * @fires Poosh#progress
  */
-async function uploadCore (): Set {
+async function uploadCore(): Set {
 
   // 1. Get and order source files
   let tuples = await this._fileProvider.getSorted(this._options.baseDir);
@@ -197,7 +197,7 @@ export default class Poosh extends EventEmitter {
   /**
    * @param options Normalized options.
    */
-  constructor (options: Object) {
+  constructor(options: Object) {
     super();
 
     this._options = options;
@@ -217,7 +217,7 @@ export default class Poosh extends EventEmitter {
    *
    * @fires Poosh#progress
    */
-  async upload () {
+  async upload() {
     await this::uploadCore();
     this._cache.flush();
   }
@@ -227,7 +227,7 @@ export default class Poosh extends EventEmitter {
    *
    * @fires Poosh#progress
    */
-  async sync () {
+  async sync() {
     let processedDestinations = await this::uploadCore();
     await this::deleteUnprocessedFiles(processedDestinations);
     this._cache.flush();

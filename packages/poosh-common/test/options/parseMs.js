@@ -1,6 +1,6 @@
 import parseMs from "../../lib/options/parseMs";
 
-describe("parseMs", function () {
+describe("parseMs", function() {
 
   it("Should parse string", () => {
     parseMs("1 min").should.eql(60000);
@@ -11,7 +11,7 @@ describe("parseMs", function () {
   });
 
   it("Should throw an error with an invalid value", () => {
-    (function () {
+    (function() {
       parseMs("(ツ)", "path");
     }).should.throw(/^Failed to parse "path" option./);
   });

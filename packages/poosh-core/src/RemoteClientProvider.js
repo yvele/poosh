@@ -19,7 +19,7 @@ const remotePluginSchema = Joi.object({
   normalizeFileRemoteOptions: Joi.func().required()
 }).unknown();
 
-function validateRemoteClient (remoteClient: Object, plugin: Object) {
+function validateRemoteClient(remoteClient: Object, plugin: Object) {
   let error = Joi.validate(remoteClient, remotePluginSchema, JOI_OPTIONS).error;
   if (error) {
     throw new PooshError(
@@ -36,7 +36,7 @@ function validateRemoteClient (remoteClient: Object, plugin: Object) {
  * @static
  * @private
  */
-function getMap (options: Object): { [key: string]: Object } {
+function getMap(options: Object): { [key: string]: Object } {
   let readonly = options.readonly.remote;
   return mapValues(options.remote, remoteOptions => {
 
@@ -64,7 +64,7 @@ export default class RemoteClientProvider {
   /**
    * @param options Normalized options object.
    */
-  constructor (options: Object) {
+  constructor(options: Object) {
     this._readonly = options.readonly.remote;
     this._map = getMap(options);
   }
@@ -75,7 +75,7 @@ export default class RemoteClientProvider {
    * @param id Remote ID.
    * @returns The remote client instance or null if not found.
    */
-  get (id: string): Object {
+  get(id: string): Object {
     if (!id) {
       id = "default";
     }
@@ -93,7 +93,7 @@ export default class RemoteClientProvider {
   /**
    * Get all RemoteClient instances that are referenced in remote section of options.
    */
-  getAll (): Array<Object> {
+  getAll(): Array<Object> {
     return Object.values(this._map);
   }
 }

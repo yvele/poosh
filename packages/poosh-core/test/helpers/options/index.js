@@ -1,3 +1,3 @@
-describe("options", function () {
+describe("options", function() {
   require("./hash");
 });

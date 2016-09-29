@@ -1,8 +1,8 @@
 import * as status from "../../lib/helpers/status";
 
-describe("status", function () {
+describe("status", function() {
 
-  describe("areSameHeaders", function () {
+  describe("areSameHeaders", function() {
     it("Should return true with equivalent objects", () => {
       status.areSameHeaders({
         headers: { values: {
@@ -73,7 +73,7 @@ describe("status", function () {
 
   });
 
-  describe("isSameRemote", function () {
+  describe("isSameRemote", function() {
 
     it("Should return true with equivalent objects", () => {
       status.isSameRemote(
@@ -98,7 +98,7 @@ describe("status", function () {
 
   });
 
-  describe("getStatusDetails", function () {
+  describe("getStatusDetails", function() {
 
     it("Should work", () => {
       status.getStatusDetails({

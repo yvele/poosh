@@ -1,6 +1,6 @@
 import omit from "lodash/omit";
 
-export default function appendRemote (file: Object, options: Object, remoteClient: Object) {
+export default function appendRemote(file: Object, options: Object, remoteClient: Object) {
 
   if (options.remote) {
     file.remote.values = omit(options.remote, "id");

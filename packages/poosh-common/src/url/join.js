@@ -5,7 +5,7 @@ const TRIM_CHARS = "/ ";
 /**
  * Join parts of an URL.
  */
-export default function join (...parts: Array<string>) {
+export default function join(...parts: Array<string>) {
   if (!parts || parts.length === 0) {
     return;
   }

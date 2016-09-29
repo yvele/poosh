@@ -209,7 +209,7 @@
     "sort-vars": [2, { "ignoreCase": false }],
     "keyword-spacing": [2, { before: true, after: true, overrides: {} }],
     "space-before-blocks": [2, "always"],
-    "space-before-function-paren": [2, "always"],
+    "space-before-function-paren": [2, "never"],
     "space-in-parens": [2, "never"],
     "space-infix-ops": [2, { int32Hint: false }],
     "space-unary-ops": [2, { words: true, nonwords: false }],

@@ -9,7 +9,7 @@ const JOI_OPTIONS = {
 /**
  * @return Joi Schema.
  */
-function createSchema (): Object {
+function createSchema(): Object {
   const stringTrim = Joi.string().trim();
   const stringTrimNull = stringTrim.allow(null);
 
@@ -91,7 +91,7 @@ function createSchema (): Object {
  * @static
  * @private
  */
-function convertError (joiError: Object) {
+function convertError(joiError: Object) {
   if (!joiError) {
     return;
   }
@@ -110,7 +110,7 @@ export default class OptionValidator {
    * @param plugins
    * @returns Error if validation failed.
    */
-  static validateSync (options: Object, plugins: Object): ?Object {
+  static validateSync(options: Object, plugins: Object): ?Object {
 
     // 1. Get a brand new schema
     let schema = createSchema();

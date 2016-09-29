@@ -16,7 +16,7 @@ const DEFAULT_GLOB_OPTIONS = {
  * @this FileProvider
  * @private
  */
-function createTuple (base: string, relative: string): FileOptionsTuple {
+function createTuple(base: string, relative: string): FileOptionsTuple {
   let options = this._fileOptionsProvider.getOptions(relative);
   if (!options) {
     return;
@@ -39,7 +39,7 @@ function createTuple (base: string, relative: string): FileOptionsTuple {
  * @this FileProvider
  * @private
  */
-function sortTuples (tuples: Array<FileOptionsTuple>): Array<FileOptionsTuple> {
+function sortTuples(tuples: Array<FileOptionsTuple>): Array<FileOptionsTuple> {
   return sortBy(tuples,
     tuple => (tuple[0].priority || 0) * -1,
     tuple => tuple[0].relative);
@@ -49,7 +49,7 @@ export default class FileProvider {
 
   _fileOptionsProvider: FileOptionsProvider;
 
-  constructor (options: Object) {
+  constructor(options: Object) {
     this._fileOptionsProvider = new FileOptionsProvider(options);
   }
 
@@ -59,7 +59,7 @@ export default class FileProvider {
    * @param baseDir Path of the directory from where to list source files.
    * @returns Sorted array of file/options tuples.
    */
-  async getSorted (baseDir: string): Array<FileOptionsTuple> {
+  async getSorted(baseDir: string): Array<FileOptionsTuple> {
     let self = this;
 
     let absoluteBaseDir = await fs.realpathAsync(baseDir);

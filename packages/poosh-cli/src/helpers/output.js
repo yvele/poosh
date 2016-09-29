@@ -13,22 +13,22 @@ const STATUS_MAP = {
   [ActionStatus.Unchanged] : chalk.gray("[unchang]")
 };
 
-function getPlural (value: Number) {
+function getPlural(value: Number) {
   return value === 1 ? "" : "s";
 }
 
-export function getFileLine (file: Object): string {
+export function getFileLine(file: Object): string {
   return STATUS_MAP[file.status] + " " + file.dest.absolute;
 }
 
-export function getMatchingLine (status: Object): string {
+export function getMatchingLine(status: Object): string {
   let count = status.match.count.toLocaleString("en");
   let size = prettyBytes(status.match.size);
   let percent = getPercent(status.match.count, status.match.total);
   return `\nMatched files: ${count} (${size}), ${percent}%.`;
 }
 
-export function getUploadingLine (status: Object): string {
+export function getUploadingLine(status: Object): string {
   let up = status.upload;
   let count = up.count.toLocaleString("en");
   let size = prettyBytes(up.size);
@@ -36,7 +36,7 @@ export function getUploadingLine (status: Object): string {
   return `\nUploaded files: ${count} (${size})${done}`;
 }
 
-export function getDeletingLine (status: Object): string {
+export function getDeletingLine(status: Object): string {
   let del = status.delete;
   let count = del.count.toLocaleString("en");
   let size = prettyBytes(del.size);
@@ -44,7 +44,7 @@ export function getDeletingLine (status: Object): string {
   return `\nDeleted remote files: ${count} (${size})${done}`;
 }
 
-export function getElapsedLine (status: Object): string {
+export function getElapsedLine(status: Object): string {
   let elapsed = humanizeDuration(Date.now() - status.startTime, {
     round: true
   });
@@ -52,7 +52,7 @@ export function getElapsedLine (status: Object): string {
   return `\nElapsed time: ${elapsed}.`;
 }
 
-export function getStatLine (status: Object): string {
+export function getStatLine(status: Object): string {
   let stat = status.stat;
   return "\n"
     + stat.creation.toLocaleString("en")
@@ -65,7 +65,7 @@ export function getStatLine (status: Object): string {
     + ` skip${getPlural(stat.unchange)}.`;
 }
 
-export function getWarningLine (options) {
+export function getWarningLine(options) {
 
   let fLine;
   let force = options.force;
@@ -91,7 +91,7 @@ export function getWarningLine (options) {
     + (roLine ? chalk.underline.yellow(`\n${roLine}`) : "");
 }
 
-function getVerboseLines2 (file: Object) {
+function getVerboseLines2(file: Object) {
 
   if (!file.cache || !file.dest) {
     return [];
@@ -116,7 +116,7 @@ function getVerboseLines2 (file: Object) {
   return [localLine, destLine];
 }
 
-function getVerboseLines3 (file: Object) {
+function getVerboseLines3(file: Object) {
 
   if (!file.src || !file.content) {
     return [];
@@ -134,14 +134,14 @@ function getVerboseLines3 (file: Object) {
   return [line];
 }
 
-function getVerboseLines4 (file: Object) {
+function getVerboseLines4(file: Object) {
   return ["file object: \n" + util.inspect(file, {
     depth: null,
     colors: true
   })];
 }
 
-export function getVerboseLines (file: Object, verbosity: number) {
+export function getVerboseLines(file: Object, verbosity: number) {
   if (verbosity < 2) {
     return "";
   }

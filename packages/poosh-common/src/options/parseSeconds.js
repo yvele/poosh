@@ -8,7 +8,7 @@ import parseMs from "./parseMs";
  * @returns Seconds as an integer.
  * @throws { InvalidOptions } Value cannot be parsed.
  */
-export default function parseSeconds (value: number|string, path?: string): number {
+export default function parseSeconds(value: number|string, path?: string): number {
 
   if (typeof value === "number") {
     return Math.floor(value);

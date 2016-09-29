@@ -1,7 +1,7 @@
 import { InvalidOptions } from "../../lib/errors";
 import { PooshError } from "../../lib/errors";
 
-describe("InvalidOptions", function () {
+describe("InvalidOptions", function() {
 
   it("Instance should be of type Error",
     () => new InvalidOptions().should.be.an.instanceOf(Error)

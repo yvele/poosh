@@ -8,11 +8,11 @@ export default class RemoteClientWrapper {
   /**
    * @param inner Inner RemoteClient object to be wrapped.
    */
-  constructor (inner: Object) {
+  constructor(inner: Object) {
     this._inner = inner;
   }
 
-  get rough () {
+  get rough() {
     return this._inner.rough;
   }
 
@@ -20,20 +20,20 @@ export default class RemoteClientWrapper {
    * @param file
    * @returns
    */
-  async getStatus (file: Object): Object {
+  async getStatus(file: Object): Object {
     return await this._inner.getStatus(file);
   }
 
   /**
    *
    */
-  async upload () {}
+  async upload() {}
 
   /**
    * @param iteratee The function invoked per iteration.
    * Iteratee functions may exit iteration early by explicitly returning false.
    */
-  async list (iteratee: Function) {
+  async list(iteratee: Function) {
     await this._inner.list(iteratee);
   }
 
@@ -41,7 +41,7 @@ export default class RemoteClientWrapper {
    * @param file
    * @returns Files that has been deleted. Or undefined if not.
    */
-  async pushDelete (file: Object): Array<Object> {
+  async pushDelete(file: Object): Array<Object> {
     return [file];
   }
 
@@ -49,18 +49,18 @@ export default class RemoteClientWrapper {
   * Flush remaining deletions.
   * @returns Files that has been deleted. Or undefined if not.
   */
-  async flushDelete () {
+  async flushDelete() {
     return null;
   }
 
   /**
    * This method doesn't make any request to remote host.
    */
-  getBaseDestination (): string {
+  getBaseDestination(): string {
     return this._inner.getBaseDestination();
   }
 
-  normalizeFileRemoteOptions (...args) {
+  normalizeFileRemoteOptions(...args) {
     return this._inner.normalizeFileRemoteOptions(...args);
   }
 }

@@ -5,7 +5,7 @@ const SEP = path.sep;
 /**
  * Convert a path name to an URL.
  */
-export default function fromPath (pathName?: string): ?string {
+export default function fromPath(pathName?: string): ?string {
   if (!pathName) {
     return pathName;
   }

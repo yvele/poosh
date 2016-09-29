@@ -7,9 +7,9 @@ const FILE = {
   remote: { values: { acl: "public-read", storageClass: "STANDARD" } }
 };
 
-describe("S3ParamsProvider", function () {
+describe("S3ParamsProvider", function() {
 
-  describe("getParamsWithKey", function () {
+  describe("getParamsWithKey", function() {
     it("Should work", () => {
       let instance = new S3ParamsProvider({});
       instance.getParamsWithKey(FILE).should.eql({
@@ -18,7 +18,7 @@ describe("S3ParamsProvider", function () {
     });
   });
 
-  describe("getConstructorOptions", function () {
+  describe("getConstructorOptions", function() {
     it("Should work", () => {
       let instance = new S3ParamsProvider({
         accessKeyId     : "accessKeyId",
@@ -41,7 +41,7 @@ describe("S3ParamsProvider", function () {
     });
   });
 
-  describe("getHeadObjectParams", function () {
+  describe("getHeadObjectParams", function() {
     it("Should work", () => {
       let instance = new S3ParamsProvider({});
       instance.getHeadObjectParams(FILE).should.eql({
@@ -50,7 +50,7 @@ describe("S3ParamsProvider", function () {
     });
   });
 
-  describe("getPutObjectParams", function () {
+  describe("getPutObjectParams", function() {
     it("Should work", () => {
       let instance = new S3ParamsProvider({});
       instance.getPutObjectParams(FILE).should.eql({
@@ -63,14 +63,14 @@ describe("S3ParamsProvider", function () {
     });
   });
 
-  describe("getListObjectsParams", function () {
+  describe("getListObjectsParams", function() {
     it("Should work", () => {
       let instance = new S3ParamsProvider({});
       instance.getListObjectsParams(FILE).should.eql({});
     });
   });
 
-  describe("getDeleteObjectsParams", function () {
+  describe("getDeleteObjectsParams", function() {
     it("Should work", () => {
       let instance = new S3ParamsProvider({});
       instance.getDeleteObjectsParams([FILE, FILE]).should.eql({

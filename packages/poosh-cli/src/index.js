@@ -3,7 +3,7 @@ import "loud-rejection/register"; // Make promises to fail loudly
 import util from "util";
 import main from "./main";
 
-function outputError (err: Object) {
+function outputError(err: Object) {
   if (err instanceof Error) {
     // eslint-disable-next-line no-console
     console.error(err.stack);

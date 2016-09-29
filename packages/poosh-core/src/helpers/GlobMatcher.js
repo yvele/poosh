@@ -9,7 +9,7 @@ import micromatch from "micromatch";
  * @this GlobMatcher
  * @private
  */
-function checkSingle (fileName: string, pattern: string): boolean {
+function checkSingle(fileName: string, pattern: string): boolean {
 
   // Cache the micropatch "pattern parsing"
   let isMatch = this._cache[pattern];
@@ -28,7 +28,7 @@ export default class GlobMatcher {
 
   _cache: Object;
 
-  constructor () {
+  constructor() {
     this._cache = {};
   }
 
@@ -39,7 +39,7 @@ export default class GlobMatcher {
    * @param patterns Glob patterns.
    * @returns True if the file name matches all the provided patterns. Otherwise false.
    */
-  check (fileName: string, patterns: Array<string> | string): boolean {
+  check(fileName: string, patterns: Array<string> | string): boolean {
     return Array.isArray(patterns)
       ? patterns.every(pattern => this::checkSingle(fileName, pattern))
       : this::checkSingle(fileName, patterns);

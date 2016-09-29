@@ -12,7 +12,7 @@ import { getStatusDetails } from "./helpers/status";
  * @this RemoteClient
  * @private
  */
-function listItemToFile (content) {
+function listItemToFile(content) {
 
   let destBase = this.getBaseDestination();
   let relative = this._basePathRegex
@@ -46,7 +46,7 @@ export default class RemoteClient {
   /**
    * @params remoteOptions Remote options.
    */
-  constructor (options: Object) {
+  constructor(options: Object) {
     this._options = options;
     this._paramsProvider = new S3ParamsProvider(this._options);
     this._s3 = new S3(this._paramsProvider.getConstructorOptions());
@@ -62,7 +62,7 @@ export default class RemoteClient {
    * Indicates that remote client is not able to make separate updates for
    * content, headers and remote options.
    */
-  get rough () {
+  get rough() {
     return true;
   }
 
@@ -70,7 +70,7 @@ export default class RemoteClient {
    * @param file
    * @returns
    */
-  async getStatus (file: Object): Object {
+  async getStatus(file: Object): Object {
 
     let params = this._paramsProvider.getHeadObjectParams(file);
 
@@ -102,7 +102,7 @@ export default class RemoteClient {
    *
    * @param file
    */
-  async upload (file: Object) {
+  async upload(file: Object) {
 
     if (file.dest.statusDetails.content === RemoteStatus.Same) {
       // If content has not changed, we can simply make make a small "self copy"
@@ -122,7 +122,7 @@ export default class RemoteClient {
    * @param iteratee The function invoked per iteration.
    * Iteratee functions may exit iteration early by explicitly returning false.
    */
-  async list (iteratee: Function) {
+  async list(iteratee: Function) {
 
     let nextMarker = null;
     do {
@@ -152,7 +152,7 @@ export default class RemoteClient {
    * @param file
    * @returns Files that has been deleted. Or undefined if not.
    */
-  async pushDelete (file: Object): Array<Object> {
+  async pushDelete(file: Object): Array<Object> {
 
     let deleteBuffer = this._deleteBuffer;
     deleteBuffer.push(file);
@@ -168,7 +168,7 @@ export default class RemoteClient {
   *
   * @returns Files that has been deleted. Or undefined if not.
   */
-  async flushDelete () {
+  async flushDelete() {
 
     let files = this._deleteBuffer;
     if (!files.length) {
@@ -188,7 +188,7 @@ export default class RemoteClient {
    *
    * @returns The remote base path.
    */
-  getBaseDestination (): string {
+  getBaseDestination(): string {
     return joinUrl(
       this._s3.endpoint.hostname,
       this._options.bucket,
@@ -203,7 +203,7 @@ export default class RemoteClient {
    * @return Normalized options.
    * @throws PooshError
    */
-  normalizeFileRemoteOptions (options) {
+  normalizeFileRemoteOptions(options) {
     return normalizeFileOptions(options);
   }
 }

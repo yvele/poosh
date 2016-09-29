@@ -18,7 +18,7 @@ export default class Pipeline {
   /**
    * @param options Normalized poosh options.
    */
-  constructor (options: Object, cache: Object) {
+  constructor(options: Object, cache: Object) {
     this._options = options;
     this._cache = cache;
   }
@@ -30,7 +30,7 @@ export default class Pipeline {
    * @param options File options.
    * @param remoteClient Remote Client.
    */
-  async processFile (file: Object, options: Object, remoteClient: Object) {
+  async processFile(file: Object, options: Object, remoteClient: Object) {
 
     // 1. Basic informations
     appendStructure(file);

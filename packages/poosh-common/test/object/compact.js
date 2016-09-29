@@ -1,6 +1,6 @@
 import compact from "../../lib/object/compact";
 
-describe("compact", function () {
+describe("compact", function() {
 
   it("Should work with an ignore function", () => {
     compact({
@@ -11,7 +11,7 @@ describe("compact", function () {
         e: [null, undefined, {}]
       },
       d: [null, { e: "e" }]
-    }, function (value) {
+    }, function(value) {
       return value === null;
     }).should.eql({
       d: [ { e: "e" } ]

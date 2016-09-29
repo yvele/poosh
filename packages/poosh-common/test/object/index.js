@@ -1,3 +1,3 @@
-describe("object", function () {
+describe("object", function() {
   require("./compact");
 });

@@ -6,7 +6,7 @@ export default class FileOptionsProvider {
   _options: Object;
   _matcher: GlobMatcher;
 
-  constructor (options) {
+  constructor(options) {
     this._options = options;
     this._matcher = new GlobMatcher();
   }
@@ -15,7 +15,7 @@ export default class FileOptionsProvider {
    * @param fileName Relative file path.
    * @returns merged options that matches.
    */
-  getOptions (fileName: string): Object {
+  getOptions(fileName: string): Object {
     let matches = 0;
     let optionsList = [];
 

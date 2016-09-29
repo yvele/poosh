@@ -1,8 +1,8 @@
 import normalizeFileOptions from "../../lib/options/normalizeFileOptions";
 
-describe("normalizeFileOptions", function () {
+describe("normalizeFileOptions", function() {
 
-  it("Should works with valid options", function () {
+  it("Should works with valid options", function() {
     normalizeFileOptions({
       acl: "private",
       storageClass: "STANDARD"
@@ -12,7 +12,7 @@ describe("normalizeFileOptions", function () {
     });
   });
 
-  it("Should works with default values", function () {
+  it("Should works with default values", function() {
     normalizeFileOptions({
       storageClass: "STANDARD"
     }).should.eql({
@@ -21,7 +21,7 @@ describe("normalizeFileOptions", function () {
     });
   });
 
-  it("Should throw with invalid options", function () {
+  it("Should throw with invalid options", function() {
     (() => normalizeFileOptions({ storageClass: "invalid" })).should.throw();
   });
 

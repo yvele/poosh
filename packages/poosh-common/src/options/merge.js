@@ -1,7 +1,7 @@
 import mergeWith from "lodash/mergeWith";
 import union from "lodash/union";
 
-function customizer (destValue, srcValue) {
+function customizer(destValue, srcValue) {
   if (srcValue && Array.isArray(destValue)) {
     // Concat arrays and remove duplicates
     return union(destValue, srcValue);
@@ -18,7 +18,7 @@ function customizer (destValue, srcValue) {
  * @param src Source options object.
  * @returns Destination object.
  */
-export default function merge (dest?: Object, ...src?: Object): ?Object {
+export default function merge(dest?: Object, ...src?: Object): ?Object {
   if (!dest || !src) {
     return dest;
   }

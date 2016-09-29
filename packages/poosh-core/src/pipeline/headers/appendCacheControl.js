@@ -1,20 +1,20 @@
 import get from "lodash/get";
 import parseSeconds from "poosh-common/lib/options/parseSeconds";
 
-function addCacheableDirective (directives, params) {
+function addCacheableDirective(directives, params) {
   if (params.cacheable) {
     directives.push(params.cacheable);
   }
 }
 
-function addMaxAgeDirective (directives, params) {
+function addMaxAgeDirective(directives, params) {
   if (params.maxAge) {
     let maxAge = parseSeconds(params.maxAge, "headers.cache-control.maxAge");
     directives.push(`max-age=${maxAge}`);
   }
 }
 
-function addNoTransformDirective (directives, params) {
+function addNoTransformDirective(directives, params) {
   if (params.noTransform) {
     directives.push("no-transform");
   }
@@ -24,7 +24,7 @@ function addNoTransformDirective (directives, params) {
  * @param file
  * @param options File options (normalized only with valid values).
  */
-export default function appendCacheControl (file, options) {
+export default function appendCacheControl(file, options) {
 
   if (file.headers.values["content-encoding"]) {
     // Value already exists

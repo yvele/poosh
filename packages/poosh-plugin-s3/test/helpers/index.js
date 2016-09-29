@@ -1,4 +1,4 @@
-describe("helpers", function () {
+describe("helpers", function() {
   require("./convertion");
   require("./status");
 });

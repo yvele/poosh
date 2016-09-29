@@ -4,7 +4,7 @@ import extractLocation from "../lib/extractLocation";
  * @param file File object.
  * @param options File options object.
  */
-export default function process (file: Object, options: Object) {
+export default function process(file: Object, options: Object) {
   if (file.headers.values.location) {
     // location header already exists
     return;

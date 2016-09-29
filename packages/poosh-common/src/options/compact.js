@@ -1,6 +1,6 @@
 import compactObject from "../object/compact";
 
-function ignore (value: any) {
+function ignore(value: any) {
   return value === null;
 }
 
@@ -10,6 +10,6 @@ function ignore (value: any) {
  * @param options
  * @returns
  */
-export default function compact (options: Object): Object {
+export default function compact(options: Object): Object {
   return compactObject(options, ignore) || {};
 }

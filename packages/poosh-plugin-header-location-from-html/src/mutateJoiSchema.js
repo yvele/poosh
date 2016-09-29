@@ -1,4 +1,4 @@
-function getLocationSchema (Joi: Object) {
+function getLocationSchema(Joi: Object) {
   return Joi.object({
     fromContent: Joi.boolean()
   });
@@ -10,7 +10,7 @@ function getLocationSchema (Joi: Object) {
  * @param schema The Joi schema to mutate.
  * @param Joi The Joi object.
  */
-export default function mutateJoiSchema (schema: Object, Joi: Object) {
+export default function mutateJoiSchema(schema: Object, Joi: Object) {
 
   // eslint-disable-next-line no-underscore-dangle
   let eachSchema = Joi.reach(schema, "each")._inner.items[0];

@@ -1,7 +1,7 @@
 /**
  *
  */
-export default function appendHeaderContentLength (file: Object) {
+export default function appendHeaderContentLength(file: Object) {
 
   let headerValues = file.headers.values;
 

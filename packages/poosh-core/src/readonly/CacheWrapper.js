@@ -8,7 +8,7 @@ export default class CacheWrapper {
   /**
    * @param inner Inner Cache object to be wrapped.
    */
-  constructor (inner: Object) {
+  constructor(inner: Object) {
     this._inner = inner;
   }
 
@@ -18,19 +18,19 @@ export default class CacheWrapper {
    * @param file
    * @returns Hashes (content, headers and remote).
    */
-  async get (file: Object): ?Object {
+  async get(file: Object): ?Object {
     return await this._inner.get(file);
   }
 
   /**
    * @param file
    */
-  async add () {}
+  async add() {}
 
   /**
    *
    */
-  flush () {}
+  flush() {}
 
   /**
    * @param files
@@ -38,7 +38,7 @@ export default class CacheWrapper {
    * @this LocalCache
    * @private
    */
-  async remove (): number {
+  async remove(): number {
     return 0;
   }
 }

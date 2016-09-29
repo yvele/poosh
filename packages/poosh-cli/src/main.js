@@ -6,7 +6,7 @@ import * as argv from "./helpers/argv";
 const pkg = require("../package.json");
 const NAME = "poosh";
 
-function initCommander () {
+function initCommander() {
 
   commander.option("-w, --plugins [string]",
     "comma separated plugins",
@@ -46,7 +46,7 @@ function initCommander () {
   commander.subcommand = argv.parseArgs(commander.args).subcommand;
 }
 
-export default async function main () {
+export default async function main() {
   const startTime = Date.now();
 
   initCommander();

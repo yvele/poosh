@@ -1,7 +1,7 @@
 import should from "should";
 import join from "../../lib/url/join";
 
-describe("join", function () {
+describe("join", function() {
 
   it("Should works", () => {
     join("/foo/", "/bar/", "a", "b", "c/")
