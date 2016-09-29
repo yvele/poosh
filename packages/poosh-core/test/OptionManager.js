@@ -1,4 +1,6 @@
-import OptionManager from "../lib/OptionManager";
+import rewire from "rewire";
+import PooshError from "poosh-common/lib/errors/PooshError";
+const OptionManager = rewire("../lib/OptionManager");
 
 describe("OptionManager", () => {
 
@@ -28,7 +30,6 @@ describe("OptionManager", () => {
 
   describe("normalizeRemote", () => {
     const normalizeRemote = OptionManager.__get__("normalizeRemote");
-    const PooshError = OptionManager.__get__("PooshError");
 
     it("Should work with an object of remote objects", () => {
       normalizeRemote({

@@ -26,7 +26,6 @@
     "babel-cli": "^6.16.0",
     "babel-eslint": "^7.0.0",
     "babel-plugin-flow-comments": "^6.3.19",
-    "babel-plugin-rewire": "1.0.0-rc-4",
     "babel-plugin-transform-builtin-extend": "^1.1.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-stage-0": "^6.5.0",
@@ -37,6 +36,7 @@
     "istanbul": "^1.0.0-alpha.2",
     "lerna": "2.0.0-beta.28",
     "mocha": "^3.0.2",
+    "rewire": "^2.5.2",
     "should": "^11.0.0",
     "sinon": "^1.17.5"
   }

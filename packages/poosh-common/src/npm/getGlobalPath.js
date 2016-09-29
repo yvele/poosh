@@ -5,6 +5,10 @@ function getPlatform () {
   return process.platform;
 }
 
+function pathJoin(...args) {
+  return path.join(...args);
+}
+
 /**
  * Get global node_modules path.
  *
@@ -18,6 +22,6 @@ export default function getGlobalPath (): string {
   // Global installs on Windows go to {prefix}/node_modules
   // See https://docs.npmjs.com/files/folders#node-modules
   return onWindows
-    ? path.join(prefix, "node_modules")
-    : path.join(prefix, "lib", "node_modules");
+    ? pathJoin(prefix, "node_modules")
+    : pathJoin(prefix, "lib", "node_modules");
 }
