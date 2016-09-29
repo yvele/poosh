@@ -1,6 +1,6 @@
 # poosh
 
-> Publish local files to virtually any remote endpoint
+> Publish local files to virtually any remote endpoint (AWS S3, etc.)
 
 [![npm version](https://img.shields.io/npm/v/poosh-cli.svg)](https://www.npmjs.com/package/poosh-cli)
 [![Travis Status](https://img.shields.io/travis/yvele/poosh/master.svg?label=travis)](https://travis-ci.org/yvele/poosh)
