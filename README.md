@@ -2,6 +2,7 @@
 
 > Publish local files to virtually any remote endpoint
 
+[![npm version](https://img.shields.io/npm/v/poosh-cli.svg)](https://www.npmjs.com/package/poosh-cli)
 [![Travis Status](https://img.shields.io/travis/yvele/poosh/master.svg?label=travis)](https://travis-ci.org/yvele/poosh)
 [![Coverage Status](https://img.shields.io/codecov/c/github/yvele/poosh/master.svg)](https://codecov.io/github/yvele/poosh)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
