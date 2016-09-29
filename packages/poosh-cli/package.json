@@ -1,6 +1,6 @@
 {
   "name": "poosh-cli",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "Poosh command line interface (cli)",
   "repository": "https://github.com/yvele/poosh/tree/master/packages/poosh-cli",
   "keywords": [
@@ -29,8 +29,8 @@
     "lodash": "^4.13.1",
     "log-update": "^1.0.2",
     "loud-rejection": "^1.6.0",
-    "poosh-common": "^1.0.8",
-    "poosh-core": "^1.0.8",
+    "poosh-common": "^1.1.0",
+    "poosh-core": "^1.1.0",
     "pretty-bytes": "^4.0.2"
   }
 }
