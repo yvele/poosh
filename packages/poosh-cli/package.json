@@ -31,6 +31,6 @@
     "loud-rejection": "^1.6.0",
     "poosh-common": "^1.0.8",
     "poosh-core": "^1.0.8",
-    "pretty-bytes": "^3.0.1"
+    "pretty-bytes": "^4.0.2"
   }
 }

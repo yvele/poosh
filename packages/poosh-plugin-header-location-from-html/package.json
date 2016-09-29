@@ -17,6 +17,6 @@
   "homepage": "https://github.com/yvele/poosh",
   "main": "lib/index.js",
   "dependencies": {
-    "cheerio": "^0.20.0"
+    "cheerio": "^0.22.0"
   }
 }
