@@ -22,7 +22,4 @@ describe("PooshError", function () {
     () => new PooshError("foo").stack.should.match(/^PooshError: foo\n/)
   );
 
-  it("Stack should contain (capture) this line of code",
-    () => new PooshError().stack.should.match(/\(PooshError\.js:/)
-  );
 });

@@ -27,7 +27,4 @@ describe("InvalidOptions", function () {
     () => new InvalidOptions("foo").stack.should.match(/^InvalidOptions: foo\n/)
   );
 
-  it("Stack should contain (capture) this line of code",
-    () => new InvalidOptions().stack.should.match(/\(InvalidOptions\.js:/)
-  );
 });
