@@ -48,3 +48,14 @@ export function getStatusDetails(file: Object, data: Object): Object {
     remote: sameToStatus(isSameRemote(file, data))
   };
 }
+
+/**
+ * @returns Status details object.
+ */
+export function getStatusDetailsMissing() {
+  return {
+    content : RemoteStatus.Missing,
+    headers : RemoteStatus.Missing,
+    remote  : RemoteStatus.Missing
+  };
+}

@@ -6,7 +6,7 @@ import normalizeFileOptions from "./options/normalizeFileOptions";
 import S3 from "./promisification/S3";
 import S3ParamsProvider from "./S3ParamsProvider";
 import { etagToMd5 } from "./helpers/convertion";
-import { getStatusDetails } from "./helpers/status";
+import { getStatusDetails, getStatusDetailsMissing } from "./helpers/status";
 
 /**
  * @this RemoteClient
@@ -82,7 +82,10 @@ export default class RemoteClient {
         throw error;
       }
 
-      return { status: RemoteStatus.Missing };
+      return {
+        status: RemoteStatus.Missing,
+        statusDetails: getStatusDetailsMissing()
+      };
     }
 
     let details = getStatusDetails(file, result);
@@ -104,9 +107,8 @@ export default class RemoteClient {
    */
   async upload(file: Object) {
 
-    if (file.dest.statusDetails.content === RemoteStatus.Same) {
-      // If content has not changed, we can simply make make a small "self copy"
-      // that will be faster
+    if (file.dest.statusDetails && file.dest.statusDetails.content === RemoteStatus.Same) {
+      // If content has not changed, we can simply do a fast "self copy"
       let params = this._paramsProvider.getSelfCopyObjectParams(file);
       await this._s3.copyObjectAsync(params);
       return;
