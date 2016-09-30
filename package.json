@@ -1,15 +1,24 @@
 {
   "private": true,
   "name": "poosh",
-  "description": "Publish local files to virtually any remote endpoint",
+  "description": "Publish local files to virtually any remote endpoint (AWS S3)",
   "author": "Merlicco Yves",
+  "repository": "https://github.com/yvele/poosh",
+  "keywords": [
+    "poosh",
+    "s3",
+    "aws",
+    "publish",
+    "publisher",
+    "sync"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/yvele/poosh/issues"
   },
   "homepage": "https://github.com/yvele/poosh",
   "scripts": {
-    "bootstrap": "./scripts/bootstrap.sh",
+    "bootstrap": "npm install && lerna bootstrap",
     "build": "./scripts/build.sh sourceonly",
     "clean": "npm run clean:build && npm run clean:test && npm run clean:npm",
     "clean:build": "./scripts/clean-build.sh",
