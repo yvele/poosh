@@ -71,3 +71,7 @@ export function parseArgs(args: Array): Object {
 
   return { subcommand };
 }
+
+export function parseEnv(val: string): String {
+  return val;
+}

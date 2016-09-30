@@ -20,6 +20,10 @@ function initCommander() {
     "force mode, can be remote, cache or both (default)",
     argv.parseForce);
 
+  commander.option("-e, --env [string]",
+    "poosh environment key",
+    argv.parseEnv);
+
   commander.option("-v, --verbose",
     "get more detailed output on every files",
     (v, total) => total + 1,
@@ -57,7 +61,7 @@ export default async function main() {
     .addOptions(commander.readonly ? { readonly: commander.readonly } : null)
     .addOptions(commander.force ? { force: commander.force } : null);
 
-  let options = optionManager.getNormalized();
+  let options = optionManager.getNormalized(commander.env);
   let poosh = new Poosh(options);
 
   let logger;

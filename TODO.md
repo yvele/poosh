@@ -34,6 +34,10 @@
 - Setup generator-star-spacing when babel-eslint issue 316 will be fixed
    - https://github.com/babel/babel-eslint/issues/316
 
+## local cache
+
+- Take poosh environment into account
+
 ## internal
 
 - Const nazification?

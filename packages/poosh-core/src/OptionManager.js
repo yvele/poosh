@@ -10,6 +10,11 @@ import PluginCollection from "./helpers/options/PluginCollection";
 
 const CONF_FILENAME = ".poosh.json5";
 
+function getPooshEnvironment() {
+  // eslint-disable-next-line no-process-env
+  return process.env.POOSH_ENV || process.env.NODE_ENV;
+}
+
 /**
  * Normalize readonly and force options objects.
  *
@@ -124,29 +129,42 @@ export default class OptionManager {
 
   /**
    * Get normalized options, ready to use for Poosh constructor.
+   * @param {string} env Environment
    * @returns Normalized and validated options.
    * @throws Error
    */
-  getNormalized(): Object {
+  getNormalized(env): Object {
 
     let plugins = this._plugins.get();
 
-    // Clone merged raw options
+    // 1. Clone merged raw options
     let options = Object.assign({}, this._options);
 
-    // Make sure MERGED raw options are valid
+    // 2. Environment
+    if (options.env) {
+      env = env || getPooshEnvironment();
+      if (env && options.env[env]) {
+        // 2a. Merge environment specific options
+        Object.assign(options, options.env[env]);
+      }
+
+      // 2b. Cleanup
+      Reflect.deleteProperty(options, "env");
+    }
+
+    // 3. Make sure MERGED raw options are valid
     let error = OptionValidator.validateSync(options, plugins);
     if (error) {
       // TODO: Throw a custom error (eg OptionValidationError)
       throw error;
     }
 
-    // Default values
+    // 4. Default values
     if (!options.concurrency) {
       options.concurrency = 3;
     }
 
-    // Normalization
+    // 5. Normalization
     options.plugins = plugins;
     options.readonly = normalizeCacheRemote(options.readonly);
     options.force = normalizeCacheRemote(options.force);
