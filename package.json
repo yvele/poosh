@@ -20,6 +20,7 @@
   "scripts": {
     "bootstrap": "npm install && lerna bootstrap",
     "build": "./scripts/build.sh sourceonly",
+    "build:sourcemaps": "./scripts/build.sh sourcemaps",
     "clean": "npm run clean:build && npm run clean:test && npm run clean:npm",
     "clean:build": "./scripts/clean-build.sh",
     "clean:npm": "./scripts/clean-npm.sh",

@@ -4,6 +4,7 @@ import joinUrl from "poosh-common/lib/url/join";
 import RemoteStatus from "poosh-common/lib/file/RemoteStatus";
 import normalizeFileOptions from "./options/normalizeFileOptions";
 import S3 from "./promisification/S3";
+import S3Error from "./S3Error";
 import S3ParamsProvider from "./S3ParamsProvider";
 import { etagToMd5 } from "./helpers/convertion";
 import { getStatusDetails, getStatusDetailsMissing } from "./helpers/status";
@@ -73,13 +74,12 @@ export default class RemoteClient {
   async getStatus(file: Object): Object {
 
     let params = this._paramsProvider.getHeadObjectParams(file);
-
     let result;
     try {
       result = await this._s3.headObjectAsync(params);
     } catch (error) {
       if (error.code !== "NotFound") {
-        throw error;
+        throw new S3Error(error);
       }
 
       return {
@@ -132,7 +132,12 @@ export default class RemoteClient {
       let params = this._paramsProvider.getListObjectsParams(this._options);
       params.Marker = nextMarker;
 
-      let data = await this._s3.listObjectsAsync(params);
+      let data;
+      try {
+        data = await this._s3.listObjectsAsync(params);
+      } catch (error) {
+        throw new S3Error(error);
+      }
 
       for (let content of data.Contents) {
         let file = this::listItemToFile(content);
