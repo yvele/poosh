@@ -1,9 +1,17 @@
 {
+  "presets": [
+    ["env", {
+      "targets"     : { "node": 4 },
+      "loose"       : true,
+      "useBuiltIns" : true
+    }]
+  ],
   "plugins": [
     "flow-comments",
-    ["transform-builtin-extend", { "globals": ["Error"] }]
+    ["transform-builtin-extend", { "globals": ["Error"] }],
+    ["transform-export-extensions", { "loose": true }],
+    ["transform-function-bind", { "loose": true }]
   ],
-  "presets": ["latest", "stage-0"],
   "env": {
     "nyc": { "plugins": ["istanbul"] }
   }

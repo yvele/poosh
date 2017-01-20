@@ -38,12 +38,6 @@ function listItemToFile(content) {
 
 export default class RemoteClient {
 
-  _options: Object;
-  _paramsProvider: S3ParamsProvider;
-  _s3: S3;
-  _deleteBuffer: Array<Object>;
-  _basePathRegex: RegExp;
-
   /**
    * @params remoteOptions Remote options.
    */

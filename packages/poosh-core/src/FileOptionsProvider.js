@@ -3,9 +3,6 @@ import GlobMatcher from "./helpers/GlobMatcher";
 
 export default class FileOptionsProvider {
 
-  _options: Object;
-  _matcher: GlobMatcher;
-
   constructor(options) {
     this._options = options;
     this._matcher = new GlobMatcher();

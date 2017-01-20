@@ -3,8 +3,6 @@
  */
 export default class RemoteClientWrapper {
 
-  _inner: Object;
-
   /**
    * @param inner Inner RemoteClient object to be wrapped.
    */

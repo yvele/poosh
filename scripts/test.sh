@@ -8,7 +8,7 @@ PACKAGE="$1"
 GLOB=$([ -n "$PACKAGE" ] && echo "$PACKAGE" || echo "*")
 
 # Build
-BABEL_ENV=test ./scripts/build.sh sourceonly "$1"
+BABEL_ENV=test ./scripts/build.sh "$1"
 
 # Test
 mocha "./packages/$GLOB/test/index.js" --opts .mocha.opts

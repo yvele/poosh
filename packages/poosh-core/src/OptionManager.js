@@ -64,9 +64,6 @@ function normalizeRemote(value: Object|string, remoteStringPlugins: Array): Obje
 
 export default class OptionManager {
 
-  _options: Object;
-  _plugins: PluginCollection;
-
   constructor() {
     this._options = { plugins: [] };
     this._plugins = new PluginCollection();

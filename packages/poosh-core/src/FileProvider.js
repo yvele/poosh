@@ -47,8 +47,6 @@ function sortTuples(tuples: Array<FileOptionsTuple>): Array<FileOptionsTuple> {
 
 export default class FileProvider {
 
-  _fileOptionsProvider: FileOptionsProvider;
-
   constructor(options: Object) {
     this._fileOptionsProvider = new FileOptionsProvider(options);
   }

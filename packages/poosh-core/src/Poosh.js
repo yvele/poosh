@@ -188,12 +188,6 @@ async function uploadCore(): Set {
 
 export default class Poosh extends EventEmitter {
 
-  _options: Object;
-  _fileProvider: FileProvider;
-  _remoteClientProvider: RemoteClientProvider;
-  _cache: Object;
-  _pipeline: Pipeline;
-
   /**
    * @param options Normalized options.
    */

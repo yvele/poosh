@@ -58,9 +58,6 @@ function getMap(options: Object): { [key: string]: Object } {
 
 export default class RemoteClientProvider {
 
-  _readonly: boolean;
-  _map: { [key: string]: Object };
-
   /**
    * @param options Normalized options object.
    */

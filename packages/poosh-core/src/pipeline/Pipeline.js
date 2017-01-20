@@ -12,9 +12,6 @@ import appendStructure from "./appendStructure";
 
 export default class Pipeline {
 
-  _options: Object;
-  _cache: Object;
-
   /**
    * @param options Normalized poosh options.
    */

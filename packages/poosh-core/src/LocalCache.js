@@ -16,8 +16,6 @@ function getQuery(file: Object): string {
 
 export default class LocalCache {
 
-  _db: Datastore;
-
   constructor(fileName: string) {
     if (!fileName) {
       fileName = DS_DEFAULT_PERSISTANCE_FILE;

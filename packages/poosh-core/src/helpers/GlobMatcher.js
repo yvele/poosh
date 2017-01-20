@@ -26,8 +26,6 @@ function checkSingle(fileName: string, pattern: string): boolean {
  */
 export default class GlobMatcher {
 
-  _cache: Object;
-
   constructor() {
     this._cache = {};
   }

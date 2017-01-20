@@ -115,12 +115,6 @@ function onProgress(task: string, files: Array, done: number, total: number) {
 
 export default class Logger {
 
-  _logBuffer: Array;
-  _status: Object;
-  _intervalId: number;
-  _warningLine: string;
-  _verbosity: any;
-
   /**
    * @param startTime
    * @param options Normalized options.
@@ -138,6 +132,7 @@ export default class Logger {
 
     this._warningLine = output.getWarningLine(options);
     this._verbosity = verbosity;
+    this._intervalId = undefined;
   }
 
   /**

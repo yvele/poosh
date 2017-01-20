@@ -116,8 +116,6 @@ function addSingle(name: string, dirname: string) {
  */
 export default class PluginCollection {
 
-  _plugins: Object;
-
   constructor() {
     this._plugins = {
       remote: {},

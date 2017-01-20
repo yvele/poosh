@@ -79,8 +79,6 @@ function appendParamsFromFileRemote(params: Object, remote: Object): Object {
 
 export default class S3ParamsProvider {
 
-  _options: RemoteOptions;
-
   constructor(options: RemoteOptions) {
     this._options = options;
   }

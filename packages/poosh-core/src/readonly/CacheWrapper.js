@@ -3,8 +3,6 @@
  */
 export default class CacheWrapper {
 
-  _inner: Object;
-
   /**
    * @param inner Inner Cache object to be wrapped.
    */
