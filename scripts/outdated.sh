@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-set -e
 
 ROOT_DIR=$(cd $(dirname $0)/..; pwd)
 cd $ROOT_DIR
 
 echo ""
-echo "----> ./"
+echo "----> ./poosh"
 npm outdated --long
 
 for D in ./packages/poosh*/; do

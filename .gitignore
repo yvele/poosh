@@ -2,14 +2,20 @@
 *.log
 npm-debug.log*
 
-# Dependency directories
+# Node - Dependencies
 node_modules
+yarn.lock
 
 # Coverage directory used by tools like istanbul
 coverage
+.nyc_output
 
 # Build
 /packages/*/lib
 
-# Misc
+# OS - OSX
 .DS_Store
+
+# OS - Windows
+Thumbs.db
+ehthumbs.db

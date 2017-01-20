@@ -6,3 +6,4 @@ cd $ROOT_DIR
 
 # Clean Istanbul Coverage Report
 rm -rf ./coverage
+rm -rf ./.nyc_output

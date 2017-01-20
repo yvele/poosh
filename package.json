@@ -19,6 +19,7 @@
   "homepage": "https://github.com/yvele/poosh",
   "scripts": {
     "bootstrap": "npm install && lerna bootstrap",
+    "bootstrap:yarn": "yarn && lerna bootstrap",
     "build": "./scripts/build.sh sourceonly",
     "build:sourcemaps": "./scripts/build.sh sourcemaps",
     "clean": "npm run clean:build && npm run clean:test && npm run clean:npm",
@@ -32,21 +33,44 @@
     "test": "./scripts/test.sh",
     "validate": "npm run style && npm run test"
   },
+  "engines": {
+    "node": ">=4.3.2",
+    "npm": ">=v4.1.1"
+  },
   "devDependencies": {
-    "babel-cli": "^6.16.0",
-    "babel-eslint": "^7.0.0",
+    "babel-cli": "^6.22.2",
+    "babel-eslint": "^7.1.1",
     "babel-plugin-flow-comments": "^6.3.19",
+    "babel-plugin-istanbul": "^3.1.2",
     "babel-plugin-transform-builtin-extend": "^1.1.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-preset-stage-0": "^6.5.0",
-    "eslint": "^3.2.2",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "eslint": "^3.14.0",
     "eslint-config-poosh": "^1.0.8",
-    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-babel": "^4.0.1",
     "eslint-plugin-flow-vars": "^0.5.0",
-    "istanbul": "^1.0.0-alpha.2",
-    "lerna": "2.0.0-beta.28",
-    "mocha": "^3.0.2",
+    "lerna": "2.0.0-beta.32",
+    "mocha": "^3.2.0",
+    "nyc": "^10.1.2",
     "rewire": "^2.5.2",
-    "should": "^11.0.0"
+    "should": "^11.1.2"
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "text-summary",
+      "lcov",
+      "html"
+    ],
+    "include": [
+      "packages/*/src/**/*.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "sourceMap": false,
+    "instrument": false,
+    "all": true
   }
 }

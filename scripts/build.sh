@@ -4,8 +4,7 @@ set -e
 ROOT_DIR=$(cd $(dirname $0)/..; pwd)
 cd $ROOT_DIR
 
-SOURCE_MAP="$1"
-PACKAGE="$2"
+PACKAGE="$1"
 
 for D in ./packages/poosh*; do
   if [ ! -d "${D}/src" ]; then
@@ -22,15 +21,8 @@ for D in ./packages/poosh*; do
   rm -rf "${D}/lib"
 
   # Build
-  if [ "$SOURCE_MAP" == "sourcemaps" ]; then
-    babel "${D}/src" \
-      --out-dir "${D}/lib" \
-      --quiet \
-      --source-maps both
-  else
-    babel "${D}/src" \
-      --out-dir "${D}/lib" \
-      --quiet
-  fi
+  babel "${D}/src" \
+    --out-dir "${D}/lib" \
+    --quiet
 
 done

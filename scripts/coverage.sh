@@ -7,7 +7,9 @@ cd $ROOT_DIR
 PACKAGE="$1"
 GLOB=$([ -n "$PACKAGE" ] && echo "$PACKAGE" || echo "*")
 
-# Build
-BABEL_ENV=test ./scripts/build.sh sourcemaps "$1"
+# 1. Build
+BABEL_ENV=nyc ./scripts/build.sh "$1"
 
-istanbul cover _mocha -- "./packages/$GLOB/test/index.js" --opts .mocha.opts
+# 2. Coverage
+nyc mocha "./packages/$GLOB/test/index.js" \
+  --opts .mocha.opts
