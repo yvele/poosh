@@ -19,6 +19,9 @@
     "lib/"
   ],
   "main": "lib/index.js",
+  "engines": {
+    "node": ">=v5.12.0"
+  },
   "dependencies": {
     "lodash": "^4.17.4",
     "ms": "^0.7.2"

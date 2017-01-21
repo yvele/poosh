@@ -21,5 +21,8 @@
   "main": "bin/poosh.js",
   "bin": {
     "poosh": "bin/poosh.js"
+  },
+  "engines": {
+    "node": ">=v5.12.0"
   }
 }

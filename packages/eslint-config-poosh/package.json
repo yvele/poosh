@@ -20,5 +20,8 @@
     "base.json5",
     "mocha.json5",
     "node.json5"
-  ]
+  ],
+  "engines": {
+    "node": ">=v5.12.0"
+  }
 }

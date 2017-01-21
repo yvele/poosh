@@ -19,6 +19,9 @@
     "lib/"
   ],
   "main": "lib/index.js",
+  "engines": {
+    "node": ">=v5.12.0"
+  },
   "dependencies": {
     "bluebird": "^3.4.7",
     "crc": "^3.4.4",
