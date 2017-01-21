@@ -2,15 +2,23 @@
   "name": "eslint-config-poosh",
   "version": "1.1.0",
   "description": "ESLint configurations for Poosh",
-  "repository": "https://github.com/yvele/poosh/tree/master/packages/eslint-config-poosh",
+  "author": "Merlicco Yves",
   "keywords": [
     "poosh",
     "eslint"
   ],
-  "author": "Merlicco Yves",
-  "license": "MIT",
+  "homepage": "https://github.com/yvele/poosh/tree/master/packages/eslint-config-poosh",
   "bugs": {
     "url": "https://github.com/yvele/poosh/issues"
   },
-  "homepage": "https://github.com/yvele/poosh"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yvele/poosh"
+  },
+  "files": [
+    "base.json5",
+    "mocha.json5",
+    "node.json5"
+  ]
 }

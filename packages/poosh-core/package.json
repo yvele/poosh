@@ -2,16 +2,22 @@
   "name": "poosh-core",
   "version": "1.2.0",
   "description": "Poosh core library",
-  "repository": "https://github.com/yvele/poosh/tree/master/packages/poosh-core",
+  "author": "Merlicco Yves",
   "keywords": [
     "poosh"
   ],
-  "author": "Merlicco Yves",
-  "license": "MIT",
+  "homepage": "https://github.com/yvele/poosh/tree/master/packages/poosh-core",
   "bugs": {
     "url": "https://github.com/yvele/poosh/issues"
   },
-  "homepage": "https://github.com/yvele/poosh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yvele/poosh"
+  },
+  "files": [
+    "lib/"
+  ],
   "main": "lib/index.js",
   "dependencies": {
     "bluebird": "^3.4.7",

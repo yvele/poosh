@@ -2,16 +2,22 @@
   "name": "poosh-common",
   "version": "1.1.0",
   "description": "Poosh common utility library (shared with plugins)",
-  "repository": "https://github.com/yvele/poosh/tree/master/packages/poosh-common",
+  "author": "Merlicco Yves",
   "keywords": [
     "poosh"
   ],
-  "author": "Merlicco Yves",
-  "license": "MIT",
+  "homepage": "https://github.com/yvele/poosh/tree/master/packages/poosh-common",
   "bugs": {
     "url": "https://github.com/yvele/poosh/issues"
   },
-  "homepage": "https://github.com/yvele/poosh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yvele/poosh"
+  },
+  "files": [
+    "lib/"
+  ],
   "main": "lib/index.js",
   "dependencies": {
     "lodash": "^4.17.4",

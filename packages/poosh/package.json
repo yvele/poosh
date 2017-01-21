@@ -2,15 +2,24 @@
   "name": "poosh",
   "version": "1.0.4",
   "description": "Poosh plugin that publishes files to AWS S3",
-  "repository": "https://github.com/yvele/poosh/tree/master/packages/poosh",
-  "keywords": [],
   "author": "Merlicco Yves",
-  "license": "MIT",
+  "keywords": [
+    "poosh"
+  ],
+  "homepage": "https://github.com/yvele/poosh/tree/master/packages/poosh",
   "bugs": {
     "url": "https://github.com/yvele/poosh/issues"
   },
-  "homepage": "https://github.com/yvele/poosh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yvele/poosh"
+  },
+  "files": [
+    "bin/"
+  ],
+  "main": "bin/poosh.js",
   "bin": {
-    "poosh": "./cli.js"
+    "poosh": "bin/poosh.js"
   }
 }

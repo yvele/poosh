@@ -2,7 +2,7 @@
   "name": "poosh-cli",
   "version": "1.2.0",
   "description": "Poosh command line interface (cli)",
-  "repository": "https://github.com/yvele/poosh/tree/master/packages/poosh-cli",
+  "author": "Merlicco Yves",
   "keywords": [
     "poosh",
     "cli",
@@ -10,13 +10,20 @@
     "publish",
     "publisher"
   ],
-  "author": "Merlicco Yves",
-  "license": "MIT",
+  "homepage": "https://github.com/yvele/poosh/tree/master/packages/poosh-cli",
   "bugs": {
     "url": "https://github.com/yvele/poosh/issues"
   },
-  "homepage": "https://github.com/yvele/poosh",
-  "main": "src/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yvele/poosh"
+  },
+  "files": [
+    "lib/",
+    "bin/"
+  ],
+  "main": "lib/index.js",
   "bin": {
     "poosh": "./bin/poosh.js"
   },
