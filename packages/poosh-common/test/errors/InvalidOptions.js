@@ -19,12 +19,4 @@ describe("InvalidOptions", function() {
     () => new InvalidOptions("foo").message.should.equal("foo")
   );
 
-  it("Stack should have error name in it's first line",
-    () => new InvalidOptions().stack.should.match(/^InvalidOptions\n/)
-  );
-
-  it("Stack should have message in it's first line",
-    () => new InvalidOptions("foo").stack.should.match(/^InvalidOptions: foo\n/)
-  );
-
 });

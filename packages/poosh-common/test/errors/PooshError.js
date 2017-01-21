@@ -14,12 +14,4 @@ describe("PooshError", function() {
     () => new PooshError("foo").message.should.equal("foo")
   );
 
-  it("Stack should have error name in it's first line",
-    () => new PooshError().stack.should.match(/^PooshError\n/)
-  );
-
-  it("Stack should have message in it's first line",
-    () => new PooshError("foo").stack.should.match(/^PooshError: foo\n/)
-  );
-
 });
