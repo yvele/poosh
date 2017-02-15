@@ -27,7 +27,8 @@ function createSchema(): Object {
       Joi.object({
         maxAge      : [stringTrimNull, Joi.number().integer().positive()],
         cacheable   : stringTrimNull.valid("public", "private", "no-cache"),
-        noTransform : Joi.boolean()
+        noTransform : Joi.boolean(),
+        immutable   : Joi.boolean()
       })
     ]
   });

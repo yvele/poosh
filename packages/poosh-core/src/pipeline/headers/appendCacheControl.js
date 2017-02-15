@@ -20,6 +20,12 @@ function addNoTransformDirective(directives, params) {
   }
 }
 
+function addImmutableDirective(directives, params) {
+  if (params.immutable) {
+    directives.push("immutable");
+  }
+}
+
 /**
  * @param file
  * @param options File options (normalized only with valid values).
@@ -40,6 +46,7 @@ export default function appendCacheControl(file, options) {
   addMaxAgeDirective(directives, params);
   addCacheableDirective(directives, params);
   addNoTransformDirective(directives, params);
+  addImmutableDirective(directives, params);
 
   if (directives.length > 0) {
     file.headers.values["cache-control"] = directives.join(", ");
