@@ -20,6 +20,7 @@ Options:
   -h, --help              output usage information
   -w, --plugins [string]  comma separated plugins
   -r, --readonly [what]   read-only mode, can be remote, cache or both (default)
+  -n, --dry-run           perform a trial run with no changes made (same as --readonly both)
   -f, --force [what]      force mode, can be remote, cache or both (default)
   -v, --verbose           get more detailed output on every files
   -q, --quiet             quiet operations

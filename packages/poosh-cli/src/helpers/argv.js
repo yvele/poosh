@@ -20,8 +20,8 @@ function parseRemoteCache(val: string, mode: string): Object {
   }
 
   return {
-    remote : val === "remote",
-    cache : val === "cache"
+    remote  : val === "remote",
+    cache   : val === "cache"
   };
 }
 

@@ -208,17 +208,17 @@ This is useful to poosh to detect distinctive local changes in either file conte
 
 ### Simulation
 
-Using the [CLI][poosh-cli] `--readonly` option,
+Using the [CLI][poosh-cli] `--dry-run` or `--readonly` options,
 no changes will be maid while output still showing potential changes:
 
 ```shell
-> poosh --readonly
+> poosh --dry-run
 ```
 
 or
 
 ```shell
-> poosh sync --readonly
+> poosh sync --dry-run
 ```
 
 ## Options

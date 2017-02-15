@@ -16,6 +16,9 @@ function initCommander() {
     "read-only mode, can be remote, cache or both (default)",
     argv.parseReadOnly);
 
+  commander.option("-n, --dry-run",
+    "perform a trial run with no changes made (same as --readonly both)");
+
   commander.option("-f, --force [what]",
     "force mode, can be remote, cache or both (default)",
     argv.parseForce);
@@ -55,11 +58,18 @@ export default async function main() {
 
   initCommander();
 
-  const optionManager = new OptionManager()
+  let optionManager = new OptionManager()
     .addConfigFile()
     .addOptions({ plugins: commander.plugins })
     .addOptions(commander.readonly ? { readonly: commander.readonly } : null)
     .addOptions(commander.force ? { force: commander.force } : null);
+
+  if (commander.dryRun) {
+    // May override readonly
+    optionManager = optionManager.addOptions({
+      readonly : { remote: true, cache: true }
+    });
+  }
 
   const options = optionManager.getNormalized(commander.env);
   const poosh = new Poosh(options);
