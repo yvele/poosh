@@ -27,9 +27,10 @@
     "coverage": "./scripts/coverage.sh",
     "outdated": "./scripts/outdated.sh",
     "publish": "./scripts/publish.sh",
-    "style": "./scripts/style.sh",
+    "style": "npm run build && npm run style:only",
+    "style:only": "./scripts/style.sh",
     "test": "./scripts/test.sh",
-    "validate": "npm run build && npm run style && npm run test"
+    "validate": "npm run style && npm run test"
   },
   "engines": {
     "node": ">=v5.12.0",
