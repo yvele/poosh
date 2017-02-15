@@ -21,8 +21,8 @@ function createSchema(): Object {
     "content-length"      : Joi.number().allow(null),
     "content-md5"         : stringTrimNull,
     "content-type"        : stringTrimNull,
-    expires             : stringTrimNull,
-    location            : stringTrimNull.uri(),
+    expires               : stringTrimNull,
+    location              : stringTrimNull.uri(),
     "cache-control"       : [stringTrimNull,
       Joi.object({
         maxAge      : [stringTrimNull, Joi.number().integer().positive()],
@@ -39,8 +39,8 @@ function createSchema(): Object {
   }).unknown());*/
 
   const remoteSchema = Joi.object({
-    type : stringTrim.required(),
-    basePath : stringTrim
+    type      : stringTrim.required(),
+    basePath  : stringTrim
   }).unknown();
 
   const schema = Joi.object({
@@ -60,13 +60,13 @@ function createSchema(): Object {
     concurrency : Joi.number().integer().positive().min(1),
 
     readonly : [Joi.boolean(), Joi.object({
-      cache : Joi.boolean(),
-      remote : Joi.boolean()
+      cache   : Joi.boolean(),
+      remote  : Joi.boolean()
     })],
 
     force : [Joi.boolean(), Joi.object({
-      cache : Joi.boolean(),
-      remote : Joi.boolean()
+      cache   : Joi.boolean(),
+      remote  : Joi.boolean()
     })],
 
     cache : Joi.object({
