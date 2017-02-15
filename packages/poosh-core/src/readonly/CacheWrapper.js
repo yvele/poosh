@@ -17,7 +17,7 @@ export default class CacheWrapper {
    * @returns Hashes (content, headers and remote).
    */
   async get(file: Object): ?Object {
-    return await this._inner.get(file);
+    await this._inner.get(file);
   }
 
   /**
@@ -39,4 +39,5 @@ export default class CacheWrapper {
   async remove(): number {
     return 0;
   }
+
 }

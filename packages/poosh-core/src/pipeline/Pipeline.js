@@ -39,7 +39,7 @@ export default class Pipeline {
     appendRemote(file, options, remoteClient);
 
     // 2. Pipe plugins
-    for (let plugin of this._options.plugins.pipe) {
+    for (const plugin of this._options.plugins.pipe) {
       await plugin.process(file, options);
     }
 

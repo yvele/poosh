@@ -1,9 +1,9 @@
 import nullsToUndefined from "../../lib/options/nullsToUndefined";
 
-describe("nullsToUndefined", function() {
+describe("nullsToUndefined", () => {
 
   it("Should mutate object", () => {
-    let obj = { a: null };
+    const obj = { a: null };
     nullsToUndefined(obj);
     obj.should.eql({ a: undefined });
   });

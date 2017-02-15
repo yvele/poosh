@@ -1,4 +1,4 @@
-describe("errors", function() {
+describe("errors", () => {
   require("./PooshError");
   require("./InvalidOptions");
 });

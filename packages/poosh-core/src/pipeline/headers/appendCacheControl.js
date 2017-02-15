@@ -9,7 +9,7 @@ function addCacheableDirective(directives, params) {
 
 function addMaxAgeDirective(directives, params) {
   if (params.maxAge) {
-    let maxAge = parseSeconds(params.maxAge, "headers.cache-control.maxAge");
+    const maxAge = parseSeconds(params.maxAge, "headers.cache-control.maxAge");
     directives.push(`max-age=${maxAge}`);
   }
 }
@@ -31,12 +31,12 @@ export default function appendCacheControl(file, options) {
     return;
   }
 
-  let params = get(options, "headers.cache-control");
+  const params = get(options, "headers.cache-control");
   if (!params) {
     return;
   }
 
-  let directives = [];
+  const directives = [];
   addMaxAgeDirective(directives, params);
   addCacheableDirective(directives, params);
   addNoTransformDirective(directives, params);

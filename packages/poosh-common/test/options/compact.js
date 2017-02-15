@@ -1,18 +1,18 @@
 import compact from "../../lib/options/compact";
 
-describe("compact", function() {
+describe("compact", () => {
 
   it("Should work", () => {
     compact({
-      a: null,
-      b: undefined,
-      c: {
-        d: undefined,
-        e: [null, undefined, {}]
+      a : null,
+      b : undefined,
+      c : {
+        d : undefined,
+        e : [null, undefined, {}]
       },
-      d: [null, { e: "e" }]
+      d : [null, { e: "e" }]
     }).should.eql({
-      d: [ { e: "e" } ]
+      d : [{ e: "e" }]
     });
   });
 

@@ -8,6 +8,7 @@ function customizer(destValue, srcValue) {
   }
 
   // Merging is handled by the mergeWith method
+  return undefined;
 }
 
 /**

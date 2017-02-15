@@ -22,9 +22,8 @@ function getCacheStatus(file: Object): string {
     file.headers.status,
     file.remote.status
   ].reduce((prev, cur) => {
-    return cur === prev && (prev === LocalStatus.New || prev === LocalStatus.Unchanged)
-      ? prev
-      : LocalStatus.Changed;
+    const unchanged = cur === prev && (prev === LocalStatus.New || prev === LocalStatus.Unchanged);
+    return unchanged ? prev : LocalStatus.Changed;
   });
 }
 

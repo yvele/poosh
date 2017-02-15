@@ -1,9 +1,9 @@
 import merge from "../../lib/options/merge";
 
-describe("merge", function() {
+describe("merge", () => {
 
   it("Should mutate destination object", () => {
-    let dest = {};
+    const dest = {};
     merge(dest, { a: "A" });
     dest.should.eql({ a: "A" });
   });
@@ -26,9 +26,9 @@ describe("merge", function() {
 
   it("Should work with 3+ arguments", () => {
     merge({ a: "a" }, { b: "b" }, { c: "c" }).should.eql({
-      a: "a",
-      b: "b",
-      c: "c"
+      a : "a",
+      b : "b",
+      c : "c"
     });
   });
 
@@ -36,13 +36,13 @@ describe("merge", function() {
    * Relative to lodash issue: https://github.com/lodash/lodash/issues/2111
    */
   it("Should not mutate source with at least 3 levels deep", () => {
-    let sources = [
+    const sources = [
       { foo: { bar: { a: "a" } } },
       { foo: { bar: { b: "b" } } }
     ];
 
     merge({}, ...sources).should.eql({
-      foo: { bar: { a: "a", b: "b" } }
+      foo : { bar: { a: "a", b: "b" } }
     });
 
     sources.should.eql([

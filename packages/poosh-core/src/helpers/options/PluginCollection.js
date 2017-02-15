@@ -5,25 +5,25 @@ import resolve from "poosh-common/lib/module/resolve";
 const NAME_PREFIX = "poosh-plugin-";
 
 const PLUGIN_SCHEMA = Joi.object({
-  remote: Joi.array().items(Joi.object({
-    id: Joi.string().trim().required(),
-    getRemoteClient: Joi.func().required()
+  remote : Joi.array().items(Joi.object({
+    id : Joi.string().trim().required(),
+    getRemoteClient : Joi.func().required()
   })),
-  remoteString: Joi.array().items(Joi.object({
-    id: Joi.string().trim().required(),
-    parse: Joi.func().required()
+  remoteString : Joi.array().items(Joi.object({
+    id : Joi.string().trim().required(),
+    parse : Joi.func().required()
   })),
-  pipe: Joi.array().items(Joi.object({
-    id: Joi.string().trim().required(),
-    process: Joi.func().required()
+  pipe : Joi.array().items(Joi.object({
+    id : Joi.string().trim().required(),
+    process : Joi.func().required()
   })),
-  cache: Joi.array().items(Joi.object({
-    id: Joi.string().trim().required(),
-    getCacheClient: Joi.func().required()
+  cache : Joi.array().items(Joi.object({
+    id : Joi.string().trim().required(),
+    getCacheClient : Joi.func().required()
   })),
-  validation: Joi.array().items(Joi.object({
-    id: Joi.string().trim().required(),
-    mutateJoiSchema: Joi.func().required()
+  validation : Joi.array().items(Joi.object({
+    id : Joi.string().trim().required(),
+    mutateJoiSchema : Joi.func().required()
   }))
 });
 
@@ -45,7 +45,7 @@ const JOI_OPTIONS = {
 function resolvePlugin(name: string, dirname: string): Object {
 
   // Resolve with prefix first, then without if needed
-  let pluginLoc = resolve(`${NAME_PREFIX}${name}`, dirname)
+  const pluginLoc = resolve(`${NAME_PREFIX}${name}`, dirname)
     || resolve(name, dirname);
 
   if (!pluginLoc) {
@@ -54,21 +54,22 @@ function resolvePlugin(name: string, dirname: string): Object {
     );
   }
 
-  let initFunction = require(pluginLoc).init;
+  // eslint-disable-next-line global-require, import/no-dynamic-require
+  const initFunction = require(pluginLoc).init;
   if (typeof initFunction !== "function") {
     throw new PooshError(
       `Plugin "${name}" is invalid: It doesn't have an init function.`
     );
   }
 
-  let plugin = initFunction();
+  const plugin = initFunction();
   if (!plugin) {
     throw new PooshError(
       `Plugin "${name}" is invalid: Initialization has returned nothing.`
     );
   }
 
-  let error = Joi.validate(plugin, PLUGIN_SCHEMA, JOI_OPTIONS).error;
+  const error = Joi.validate(plugin, PLUGIN_SCHEMA, JOI_OPTIONS).error;
   if (error) {
     throw new PooshError(
       `Plugin "${name}" is invalid: Init method has returned an invalid object ${error}`
@@ -88,10 +89,12 @@ function resolvePlugin(name: string, dirname: string): Object {
  */
 function addSingle(name: string, dirname: string) {
 
-  let plugin = resolvePlugin(name, dirname);
+  const plugin = resolvePlugin(name, dirname);
 
   if (plugin.remote) {
-    plugin.remote.forEach(p => this._plugins.remote[p.id] = p);
+    plugin.remote.forEach((p) => {
+      this._plugins.remote[p.id] = p;
+    });
   }
 
   if (plugin.remoteString) {
@@ -103,7 +106,9 @@ function addSingle(name: string, dirname: string) {
   }
 
   if (plugin.cache) {
-    plugin.remote.forEach(p => this._plugins.cache[p.id] = p);
+    plugin.remote.forEach((p) => {
+      this._plugins.cache[p.id] = p;
+    });
   }
 
   if (plugin.validation) {
@@ -118,11 +123,11 @@ export default class PluginCollection {
 
   constructor() {
     this._plugins = {
-      remote: {},
-      remoteString: [],
-      pipe: [],
-      cache: {},
-      validation: []
+      remote : {},
+      remoteString : [],
+      pipe : [],
+      cache : {},
+      validation : []
     };
   }
 
@@ -145,4 +150,5 @@ export default class PluginCollection {
   get() {
     return this._plugins;
   }
+
 }

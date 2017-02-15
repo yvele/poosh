@@ -3,21 +3,21 @@ import looseParseUrl from "poosh-common/lib/url/looseParse";
 
 function parse(host: string, pathname: string): Object {
   if (!host || !pathname) {
-    return;
+    return undefined;
   }
 
-  let regionMath = host.match(/^s3-(.*)\.amazonaws\.com$/i);
+  const regionMath = host.match(/^s3-(.*)\.amazonaws\.com$/i);
   if (!regionMath || regionMath.length !== 2) {
-    return;
+    return undefined;
   }
 
-  let result = {
-    type: "s3",
-    region: regionMath[1].toLowerCase()
+  const result = {
+    type    : "s3",
+    region  : regionMath[1].toLowerCase()
   };
 
   pathname = trim(pathname, "/");
-  let slashIndex = pathname.indexOf("/");
+  const slashIndex = pathname.indexOf("/");
   if (slashIndex === -1) {
     result.bucket = pathname;
     return result;
@@ -32,8 +32,10 @@ function parse(host: string, pathname: string): Object {
  * Parse remote options from a single URL.
  */
 export default function parseRemoteOptions(url: string): ?Object {
-  let urlObject = looseParseUrl(url);
-  if (urlObject) {
-    return parse(urlObject.host, urlObject.pathname);
+  const urlObject = looseParseUrl(url);
+  if (!urlObject) {
+    return undefined;
   }
+
+  return parse(urlObject.host, urlObject.pathname);
 }

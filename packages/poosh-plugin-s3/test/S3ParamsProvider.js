@@ -4,23 +4,23 @@ const FILE = {
   dest    : { relative: "relative" },
   content : { buffer: "buffer" },
   headers : { values: { location: "location" } },
-  remote: { values: { acl: "public-read", storageClass: "STANDARD" } }
+  remote : { values: { acl: "public-read", storageClass: "STANDARD" } }
 };
 
-describe("S3ParamsProvider", function() {
+describe("S3ParamsProvider", () => {
 
-  describe("getParamsWithKey", function() {
+  describe("getParamsWithKey", () => {
     it("Should work", () => {
-      let instance = new S3ParamsProvider({});
+      const instance = new S3ParamsProvider({});
       instance.getParamsWithKey(FILE).should.eql({
-        Key: "relative"
+        Key : "relative"
       });
     });
   });
 
-  describe("getConstructorOptions", function() {
+  describe("getConstructorOptions", () => {
     it("Should work", () => {
-      let instance = new S3ParamsProvider({
+      const instance = new S3ParamsProvider({
         accessKeyId     : "accessKeyId",
         secretAccessKey : "secretAccessKey",
         region          : "region",
@@ -41,41 +41,41 @@ describe("S3ParamsProvider", function() {
     });
   });
 
-  describe("getHeadObjectParams", function() {
+  describe("getHeadObjectParams", () => {
     it("Should work", () => {
-      let instance = new S3ParamsProvider({});
+      const instance = new S3ParamsProvider({});
       instance.getHeadObjectParams(FILE).should.eql({
-        Key: "relative"
+        Key : "relative"
       });
     });
   });
 
-  describe("getPutObjectParams", function() {
+  describe("getPutObjectParams", () => {
     it("Should work", () => {
-      let instance = new S3ParamsProvider({});
+      const instance = new S3ParamsProvider({});
       instance.getPutObjectParams(FILE).should.eql({
-        Body: "buffer",
-        Key: "relative",
-        WebsiteRedirectLocation: "location",
-        ACL: "public-read",
-        StorageClass: "STANDARD"
+        Body : "buffer",
+        Key : "relative",
+        WebsiteRedirectLocation : "location",
+        ACL : "public-read",
+        StorageClass : "STANDARD"
       });
     });
   });
 
-  describe("getListObjectsParams", function() {
+  describe("getListObjectsParams", () => {
     it("Should work", () => {
-      let instance = new S3ParamsProvider({});
+      const instance = new S3ParamsProvider({});
       instance.getListObjectsParams(FILE).should.eql({});
     });
   });
 
-  describe("getDeleteObjectsParams", function() {
+  describe("getDeleteObjectsParams", () => {
     it("Should work", () => {
-      let instance = new S3ParamsProvider({});
+      const instance = new S3ParamsProvider({});
       instance.getDeleteObjectsParams([FILE, FILE]).should.eql({
-        Delete: {
-          Objects: [ { Key: "relative" }, { Key: "relative" } ]
+        Delete : {
+          Objects : [{ Key: "relative" }, { Key: "relative" }]
         }
       });
     });

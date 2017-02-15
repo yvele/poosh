@@ -32,5 +32,6 @@ export default function hash(object: Object): string {
   // Consistant key/value pair ordering
   pairs = sortBy(pairs, pair => pair[0]);
 
+  // eslint-disable-next-line no-magic-numbers
   return crc32(JSON.stringify(pairs)).toString(16);
 }

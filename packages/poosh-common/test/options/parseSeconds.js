@@ -1,6 +1,6 @@
 import parseSeconds from "../../lib/options/parseSeconds";
 
-describe("parseSeconds", function() {
+describe("parseSeconds", () => {
 
   it("Should work with a number", () => {
     parseSeconds(10).should.eql(10);

@@ -1,16 +1,16 @@
 import should from "should";
 import pushNonFalsy from "../../lib/array/pushNonFalsy";
 
-describe("pushNonFalsy", function() {
+describe("pushNonFalsy", () => {
 
   it("Should works", () => {
-    let array = [true];
+    const array = [true];
     pushNonFalsy(true, array)
       .should.equal(array).and.eql([true, true]);
   });
 
   it("Should works with a falsy value", () => {
-    let array = [true];
+    const array = [true];
     pushNonFalsy(undefined, array)
       .should.equal(array).and.eql([true]);
   });

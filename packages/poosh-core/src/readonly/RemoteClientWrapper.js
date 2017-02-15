@@ -19,7 +19,7 @@ export default class RemoteClientWrapper {
    * @returns
    */
   async getStatus(file: Object): Object {
-    return await this._inner.getStatus(file);
+    return this._inner.getStatus(file);
   }
 
   /**
@@ -61,4 +61,5 @@ export default class RemoteClientWrapper {
   normalizeFileRemoteOptions(...args) {
     return this._inner.normalizeFileRemoteOptions(...args);
   }
+
 }

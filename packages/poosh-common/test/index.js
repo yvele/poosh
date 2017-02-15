@@ -1,6 +1,6 @@
 import "../lib";
 
-describe("poosh-common", function() {
+describe("poosh-common", () => {
   require("./array");
   require("./errors");
   require("./npm");

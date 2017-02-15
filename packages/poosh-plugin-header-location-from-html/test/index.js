@@ -1,5 +1,5 @@
 import "../lib";
 
-describe("poosh-plugin-header-location-from-html", function() {
+describe("poosh-plugin-header-location-from-html", () => {
   require("./extractLocation");
 });

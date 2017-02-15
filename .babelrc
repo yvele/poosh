@@ -8,9 +8,10 @@
   ],
   "plugins": [
     "flow-comments",
-    ["transform-builtin-extend", { "globals": ["Error"] }],
+    ["transform-builtin-extend", { "loose": true, "globals": ["Error"] }],
     ["transform-export-extensions", { "loose": true }],
-    ["transform-function-bind", { "loose": true }]
+    ["transform-function-bind", { "loose": true }],
+    ["add-module-exports", { "loose": true }]
   ],
   "env": {
     "nyc": { "plugins": ["istanbul"] }

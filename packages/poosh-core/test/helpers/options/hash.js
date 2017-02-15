@@ -1,6 +1,6 @@
 import hash from "../../../lib/helpers/options/hash";
 
-describe("hash", function() {
+describe("hash", () => {
 
   it("Should not return the same hash for different objects", () => {
     hash({ a: "A" })

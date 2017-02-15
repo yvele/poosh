@@ -15,7 +15,7 @@ export default function process(file: Object, options: Object) {
     return;
   }
 
-  let location = extractLocation(file.src.buffer);
+  const location = extractLocation(file.src.buffer);
   if (location) {
     file.headers.values.location = location;
   }

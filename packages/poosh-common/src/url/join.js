@@ -7,7 +7,7 @@ const TRIM_CHARS = "/ ";
  */
 export default function join(...parts: Array<string>) {
   if (!parts || parts.length === 0) {
-    return;
+    return undefined;
   }
 
   return parts

@@ -10,10 +10,10 @@ import trimStart from "lodash/trimStart";
  */
 export default function looseParse(value: string, defaultProtocol: ?string): Object {
   if (!value) {
-    return;
+    return undefined;
   }
 
-  let res = url.parse(value);
+  const res = url.parse(value);
   return res.protocol
     ? res
     : url.parse((defaultProtocol || "http://") + trimStart(value, " :/"));

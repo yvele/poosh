@@ -41,8 +41,8 @@ function log(line: string) {
  */
 function logFile(file: Object) {
 
-  let status = this._status;
-  let contentSize = file.content.size || 0;
+  const status = this._status;
+  const contentSize = file.content.size || 0;
 
   switch (file.status) {
     case ActionStatus.Created:
@@ -86,9 +86,7 @@ function logFile(file: Object) {
  * @private
  */
 function logFiles(files: Array<Object>) {
-  for (let file of files) {
-    this::logFile(file);
-  }
+  files.forEach(file => this::logFile(file));
 }
 
 /**
@@ -98,7 +96,7 @@ function logFiles(files: Array<Object>) {
  * @private
  */
 function onProgress(task: string, files: Array, done: number, total: number) {
-  let status = this._status;
+  const status = this._status;
 
   if (task === "match") {
     status.match.count = done;
@@ -124,10 +122,10 @@ export default class Logger {
     this._logBuffer = [];
     this._status = {
       startTime,
-      "match"  : { count: 0, size: 0, total: 0 },
-      "upload" : { count: 0, size: 0, done: null },
-      "delete" : { count: 0, size: 0, done: null },
-      "stat"   : { creation: 0, update: 0, deletion: 0, unchange: 0 }
+      match  : { count: 0, size: 0, total: 0 },
+      upload : { count: 0, size: 0, done: null },
+      delete : { count: 0, size: 0, done: null },
+      stat   : { creation: 0, update: 0, deletion: 0, unchange: 0 }
     };
 
     this._warningLine = output.getWarningLine(options);
@@ -151,4 +149,5 @@ export default class Logger {
     clearInterval(this._intervalId);
     this::display();
   }
+
 }

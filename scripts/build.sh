@@ -6,7 +6,7 @@ cd $ROOT_DIR
 
 PACKAGE="$1"
 
-for D in ./packages/poosh*; do
+for D in ./packages/*; do
   if [ ! -d "${D}/src" ]; then
     continue
   fi

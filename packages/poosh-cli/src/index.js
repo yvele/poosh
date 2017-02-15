@@ -9,11 +9,11 @@ function outputError(err: Object) {
     console.error(err.stack);
   } else {
     // eslint-disable-next-line no-console
-    console.error("Promise rejected with value: " + util.inspect(err));
+    console.error(`Promise rejected with value: ${util.inspect(err)}`);
   }
 }
 
-main().catch(err => {
+main().catch((err) => {
   outputError(err);
 
   // eslint-disable-next-line no-process-exit

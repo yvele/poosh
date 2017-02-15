@@ -42,4 +42,5 @@ export default class GlobMatcher {
       ? patterns.every(pattern => this::checkSingle(fileName, pattern))
       : this::checkSingle(fileName, patterns);
   }
+
 }

@@ -4,6 +4,9 @@ set -e
 ROOT_DIR=$(cd $(dirname $0)/..; pwd)
 cd $ROOT_DIR
 
+# 1. Src
 eslint ./packages/*/src/**
-eslint -c ./node_modules/eslint-config-poosh/mocha.json5 \
+
+# 2. Test
+eslint -c ./node_modules/eslint-config-poosh/mocha.js \
   ./packages/*/test/**

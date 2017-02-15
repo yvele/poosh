@@ -42,7 +42,7 @@ function normalizeRemote(value: Object|string, remoteStringPlugins: Array): Obje
   // Parse string with plugins
   if (typeof value === "string") {
 
-    let parsed = remoteStringPlugins.reduce(
+    const parsed = remoteStringPlugins.reduce(
       (prev, plugin) => pushNonFalsy(plugin.parse(value), prev),
       null
     );
@@ -51,12 +51,12 @@ function normalizeRemote(value: Object|string, remoteStringPlugins: Array): Obje
       throw new PooshError(`Invalid options: Unable to parse remote string "${value}"`);
     }
 
-    return { "default": parsed[0] };
+    return { default: parsed[0] };
   }
 
   // Single default object
   if (value.type) {
-    return { "default": value };
+    return { default: value };
   }
 
   return value;
@@ -94,19 +94,16 @@ export default class OptionManager {
    */
   addConfigFile(location?: string) {
 
-    //TODO: Dedicated function!
-    if (!location) {
-      location = findup(CONF_FILENAME, {
-        cwd: process.cwd(),
-        nocase: true
-      });
+    const filePath = location || findup(CONF_FILENAME, {
+      cwd : process.cwd(),
+      nocase : true
+    });
 
-      if (!location) {
-        throw new PooshError("Configuration file not found");
-      }
+    if (!filePath) {
+      throw new PooshError("Configuration file not found");
     }
 
-    let content = fs.readFileSync(location, "utf8");
+    const content = fs.readFileSync(filePath, "utf8");
     let rawOpts;
 
     try {
@@ -114,11 +111,11 @@ export default class OptionManager {
     } catch (err) {
 
       // TODO: Dedicated PooshError with inner error
-      err.message = `${location}: Error while parsing JSON - ${err.message}`;
+      err.message = `${filePath}: Error while parsing JSON - ${err.message}`;
       throw err;
     }
 
-    let dirname = path.dirname(location);
+    const dirname = path.dirname(filePath);
 
     this.addOptions(rawOpts, dirname);
     return this;
@@ -132,17 +129,17 @@ export default class OptionManager {
    */
   getNormalized(env): Object {
 
-    let plugins = this._plugins.get();
+    const plugins = this._plugins.get();
 
     // 1. Clone merged raw options
-    let options = Object.assign({}, this._options);
+    const options = Object.assign({}, this._options);
 
     // 2. Environment
     if (options.env) {
-      env = env || getPooshEnvironment();
-      if (env && options.env[env]) {
+      const environment = env || getPooshEnvironment();
+      if (environment && options.env[environment]) {
         // 2a. Merge environment specific options
-        Object.assign(options, options.env[env]);
+        Object.assign(options, options.env[environment]);
       }
 
       // 2b. Cleanup
@@ -150,7 +147,7 @@ export default class OptionManager {
     }
 
     // 3. Make sure MERGED raw options are valid
-    let error = OptionValidator.validateSync(options, plugins);
+    const error = OptionValidator.validateSync(options, plugins);
     if (error) {
       // TODO: Throw a custom error (eg OptionValidationError)
       throw error;
@@ -169,4 +166,5 @@ export default class OptionManager {
 
     return options;
   }
+
 }

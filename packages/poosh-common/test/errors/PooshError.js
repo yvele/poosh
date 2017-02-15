@@ -1,6 +1,6 @@
 import { PooshError } from "../../lib/errors";
 
-describe("PooshError", function() {
+describe("PooshError", () => {
 
   it("Instance should be of type Error",
     () => new PooshError().should.be.an.instanceOf(Error)

@@ -1,5 +1,8 @@
+const FORBIDDEN_STATUS_CODE = 403;
+
 function isForbidden(inner) {
-  return inner && (inner.code === "Forbidden" || inner.statusCode === 403);
+  const { code, statusCode } = inner;
+  return code === "Forbidden" || statusCode === FORBIDDEN_STATUS_CODE;
 }
 
 export default class S3Error extends Error {

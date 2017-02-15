@@ -1,4 +1,4 @@
-describe("helpers", function() {
+describe("helpers", () => {
   require("./options");
   require("./GlobMatcher");
 });

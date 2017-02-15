@@ -2,7 +2,7 @@ import Joi from "joi";
 import PooshError from "poosh-common/lib/errors/PooshError";
 
 const OPTIONS_SCHEMA = Joi.object().keys({
-  acl: Joi.any().valid([
+  acl : Joi.any().valid([
     "private",
     "public-read",
     "public-read-write",
@@ -11,7 +11,7 @@ const OPTIONS_SCHEMA = Joi.object().keys({
     "bucket-owner-read",
     "bucket-owner-full-control"
   ]),
-  storageClass: Joi.any().valid([
+  storageClass : Joi.any().valid([
     "STANDARD",
     "REDUCED_REDUNDANCY",
     "STANDARD_IA"])
@@ -38,7 +38,7 @@ export default function normalizeFileOptions(options: Object) {
     options.acl = "public-read";
   }
 
-  let error = Joi.validate(options, OPTIONS_SCHEMA, JOI_OPTIONS).error;
+  const error = Joi.validate(options, OPTIONS_SCHEMA, JOI_OPTIONS).error;
   if (error) {
     throw new PooshError(`Invalid file's remote S3 options: ${error}`);
   }

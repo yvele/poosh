@@ -2,8 +2,8 @@ import commander from "commander";
 import { Poosh, OptionManager } from "poosh-core";
 import Logger from "./Logger";
 import * as argv from "./helpers/argv";
+import { version } from "../package.json";
 
-const pkg = require("../package.json");
 const NAME = "poosh";
 
 function initCommander() {
@@ -44,7 +44,7 @@ function initCommander() {
     );
   });
 
-  commander.version(pkg.version);
+  commander.version(version);
   commander.usage("<command> [options]");
   commander.parse(process.argv);
   commander.subcommand = argv.parseArgs(commander.args).subcommand;
@@ -55,14 +55,14 @@ export default async function main() {
 
   initCommander();
 
-  let optionManager = new OptionManager()
+  const optionManager = new OptionManager()
     .addConfigFile()
     .addOptions({ plugins: commander.plugins })
     .addOptions(commander.readonly ? { readonly: commander.readonly } : null)
     .addOptions(commander.force ? { force: commander.force } : null);
 
-  let options = optionManager.getNormalized(commander.env);
-  let poosh = new Poosh(options);
+  const options = optionManager.getNormalized(commander.env);
+  const poosh = new Poosh(options);
 
   let logger;
   if (!commander.quiet) {

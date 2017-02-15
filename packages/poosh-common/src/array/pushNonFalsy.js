@@ -7,10 +7,14 @@
  * @returns Array
  */
 export default function pushNonFalsy(value: any, array: ?Array): ?Array {
-  if (value) {
-    array = array || [];
-    array.push(value);
+  if (!value) {
+    return array;
   }
 
+  if (!array) {
+    return [value];
+  }
+
+  array.push(value);
   return array;
 }

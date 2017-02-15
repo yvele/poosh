@@ -1,7 +1,7 @@
-import fs from "./promisified/fs";
 import sortBy from "lodash/sortBy";
 import Promise from "bluebird";
 import { Glob } from "glob";
+import fs from "./promisified/fs";
 import FileOptionsProvider from "./FileOptionsProvider";
 
 type FileOptionsTuple = [Object, Object];
@@ -17,12 +17,12 @@ const DEFAULT_GLOB_OPTIONS = {
  * @private
  */
 function createTuple(base: string, relative: string): FileOptionsTuple {
-  let options = this._fileOptionsProvider.getOptions(relative);
+  const options = this._fileOptionsProvider.getOptions(relative);
   if (!options) {
-    return;
+    return undefined;
   }
 
-  let file = {};
+  const file = {};
 
   if (options.priority) {
     file.priority = options.priority;
@@ -58,18 +58,18 @@ export default class FileProvider {
    * @returns Sorted array of file/options tuples.
    */
   async getSorted(baseDir: string): Array<FileOptionsTuple> {
-    let self = this;
+    const self = this;
 
-    let absoluteBaseDir = await fs.realpathAsync(baseDir);
-    let globOptions = Object.assign(DEFAULT_GLOB_OPTIONS, {
-      cwd: absoluteBaseDir
+    const absoluteBaseDir = await fs.realpathAsync(baseDir);
+    const globOptions = Object.assign(DEFAULT_GLOB_OPTIONS, {
+      cwd : absoluteBaseDir
     });
 
-    let tuples = [];
+    const tuples = [];
 
-    await Promise.fromCallback(callback => {
-      new Glob("**", globOptions, callback).on("match", match => {
-        let tuple = self::createTuple(absoluteBaseDir, match);
+    await Promise.fromCallback((callback) => {
+      new Glob("**", globOptions, callback).on("match", (match) => {
+        const tuple = self::createTuple(absoluteBaseDir, match);
         if (tuple) {
           tuples.push(tuple);
         }
@@ -78,4 +78,5 @@ export default class FileProvider {
 
     return sortTuples(tuples);
   }
+
 }

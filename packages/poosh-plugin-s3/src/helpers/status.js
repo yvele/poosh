@@ -20,10 +20,10 @@ export function isSameContent(file: Object, data: Object): boolean {
 }
 
 export function areSameHeaders(file: Object, data: Object): boolean {
-  let fileHeaders = mapKeys(file.headers.values,
+  const fileHeaders = mapKeys(file.headers.values,
     (value, key) => HEADERS_TO_PARAMS_MAP[key]);
 
-  let dataHeaders = pick(data, HEADERS_PARAMS);
+  const dataHeaders = pick(data, HEADERS_PARAMS);
 
   return isEqual(compactOptions(fileHeaders), compactOptions(dataHeaders));
 }
@@ -31,8 +31,7 @@ export function areSameHeaders(file: Object, data: Object): boolean {
 export function isSameRemote(file: Object, data: Object): boolean {
   // ACL is ignored because headObject doesn't return ACL
   // and getObjectAcl is not (yet?) handled
-  return isUndefinedOrNull(file.remote.values.storageClass)
-    && isUndefinedOrNull(data.StorageClass)
+  return (isUndefinedOrNull(file.remote.values.storageClass) && isUndefinedOrNull(data.StorageClass))
     || file.remote.values.storageClass === data.StorageClass;
 }
 
@@ -43,9 +42,9 @@ export function isSameRemote(file: Object, data: Object): boolean {
  */
 export function getStatusDetails(file: Object, data: Object): Object {
   return {
-    content: sameToStatus(isSameContent(file, data)),
-    headers: sameToStatus(areSameHeaders(file, data)),
-    remote: sameToStatus(isSameRemote(file, data))
+    content : sameToStatus(isSameContent(file, data)),
+    headers : sameToStatus(areSameHeaders(file, data)),
+    remote : sameToStatus(isSameRemote(file, data))
   };
 }
 

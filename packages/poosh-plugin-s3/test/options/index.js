@@ -1,4 +1,4 @@
-describe("options", function() {
+describe("options", () => {
   require("./normalizeFileOptions");
   require("./parseRemoteOptions");
 });

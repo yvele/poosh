@@ -1,4 +1,5 @@
 import merge from "poosh-common/lib/options/merge";
+import { isNullOrUndefined } from "poosh-common/lib/lang";
 import GlobMatcher from "./helpers/GlobMatcher";
 
 export default class FileOptionsProvider {
@@ -13,32 +14,21 @@ export default class FileOptionsProvider {
    * @returns merged options that matches.
    */
   getOptions(fileName: string): Object {
-    let matches = 0;
-    let optionsList = [];
 
-    for (let item of this._options.each) {
+    const optionsList = this._options.each
+      .filter(item => isNullOrUndefined(item.match) || this._matcher.check(fileName, item.match));
 
-      if (item.match === undefined || item.match === null) {
-        // No pattern means that options are applicable
-        // but does not count as a match
-        optionsList.push(item);
-        continue;
-      }
-
-      if (this._matcher.check(fileName, item.match)) {
-        optionsList.push(item);
-        matches++;
-      }
-    }
-
+    // No pattern means that options are applicable but does not count as a match
+    const matches = optionsList.filter(item => !isNullOrUndefined(item.match)).length;
     if (matches < 1) {
-      return; // No matches
+      return undefined; // No matches
     }
 
     // Merge applicable options
-    let options = merge({}, ...optionsList);
+    const options = merge({}, ...optionsList);
 
     Reflect.deleteProperty(options, "match");
     return options;
   }
+
 }

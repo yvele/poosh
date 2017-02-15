@@ -15,12 +15,12 @@ export default function parseSeconds(value: number|string, path?: string): numbe
   }
 
   if (typeof value === "string") {
-    let sec = Number(value);
+    const sec = Number(value);
     if (!isNaN(sec)) {
       return Math.floor(sec);
     }
   }
 
-  let ms = parseMs(value, path);
+  const ms = parseMs(value, path);
   return Math.floor(ms / 1000);
 }

@@ -15,23 +15,23 @@ import { getStatusDetails, getStatusDetailsMissing } from "./helpers/status";
  */
 function listItemToFile(content) {
 
-  let destBase = this.getBaseDestination();
-  let relative = this._basePathRegex
+  const destBase = this.getBaseDestination();
+  const relative = this._basePathRegex
     ? content.Key.replace(this._basePathRegex, "")
     : content.Key;
 
   return {
-    dest: {
-      base: destBase,
+    dest : {
+      base : destBase,
       relative,
-      absolute: joinUrl(destBase, relative)
+      absolute : joinUrl(destBase, relative)
     },
-    content: {
-      md5: etagToMd5(content.ETag),
-      size: content.Size
+    content : {
+      md5 : etagToMd5(content.ETag),
+      size : content.Size
     },
-    remote: {
-      storageClass: content.StorageClass
+    remote : {
+      storageClass : content.StorageClass
     }
   };
 }
@@ -48,7 +48,7 @@ export default class RemoteClient {
     this._deleteBuffer = [];
 
     if (this._options.basePath) {
-      let basePath = escapeRegExp(this._options.basePath);
+      const basePath = escapeRegExp(this._options.basePath);
       this._basePathRegex = new RegExp(`^(${basePath}/)`);
     }
   }
@@ -67,7 +67,7 @@ export default class RemoteClient {
    */
   async getStatus(file: Object): Object {
 
-    let params = this._paramsProvider.getHeadObjectParams(file);
+    const params = this._paramsProvider.getHeadObjectParams(file);
     let result;
     try {
       result = await this._s3.headObjectAsync(params);
@@ -77,20 +77,20 @@ export default class RemoteClient {
       }
 
       return {
-        status: RemoteStatus.Missing,
-        statusDetails: getStatusDetailsMissing()
+        status : RemoteStatus.Missing,
+        statusDetails : getStatusDetailsMissing()
       };
     }
 
-    let details = getStatusDetails(file, result);
+    const details = getStatusDetails(file, result);
 
     return {
-      status: details.content === RemoteStatus.Same
+      status : details.content === RemoteStatus.Same
         && details.headers === RemoteStatus.Same
         && details.remote === RemoteStatus.Same
           ? RemoteStatus.Same
           : RemoteStatus.Different,
-      statusDetails: details
+      statusDetails : details
     };
   }
 
@@ -103,12 +103,12 @@ export default class RemoteClient {
 
     if (file.dest.statusDetails && file.dest.statusDetails.content === RemoteStatus.Same) {
       // If content has not changed, we can simply do a fast "self copy"
-      let params = this._paramsProvider.getSelfCopyObjectParams(file);
+      const params = this._paramsProvider.getSelfCopyObjectParams(file);
       await this._s3.copyObjectAsync(params);
       return;
     }
 
-    let params = this._paramsProvider.getPutObjectParams(file);
+    const params = this._paramsProvider.getPutObjectParams(file);
     await this._s3.putObjectAsync(params);
   }
 
@@ -123,7 +123,7 @@ export default class RemoteClient {
     let nextMarker = null;
     do {
 
-      let params = this._paramsProvider.getListObjectsParams(this._options);
+      const params = this._paramsProvider.getListObjectsParams(this._options);
       params.Marker = nextMarker;
 
       let data;
@@ -133,8 +133,8 @@ export default class RemoteClient {
         throw new S3Error(error);
       }
 
-      for (let content of data.Contents) {
-        let file = this::listItemToFile(content);
+      for (const content of data.Contents) {
+        const file = this::listItemToFile(content);
 
         // Iteratee may exit iteration early by explicitly returning false
         if (await iteratee(file) === false) {
@@ -155,13 +155,12 @@ export default class RemoteClient {
    */
   async pushDelete(file: Object): Array<Object> {
 
-    let deleteBuffer = this._deleteBuffer;
+    const deleteBuffer = this._deleteBuffer;
     deleteBuffer.push(file);
 
-    if (deleteBuffer.length >= 1000) {
-      // Auto flush
-      return await this.flushDelete();
-    }
+    return deleteBuffer.length >= 1000
+      ? this.flushDelete() // Auto flush
+      : undefined;
   }
 
  /**
@@ -171,12 +170,12 @@ export default class RemoteClient {
   */
   async flushDelete() {
 
-    let files = this._deleteBuffer;
+    const files = this._deleteBuffer;
     if (!files.length) {
-      return;
+      return undefined;
     }
 
-    let params = this._paramsProvider.getDeleteObjectsParams(files);
+    const params = this._paramsProvider.getDeleteObjectsParams(files);
     await this._s3.deleteObjectsAsync(params);
     this._deleteBuffer = [];
 
@@ -207,4 +206,5 @@ export default class RemoteClient {
   normalizeFileRemoteOptions(options) {
     return normalizeFileOptions(options);
   }
+
 }

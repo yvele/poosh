@@ -6,7 +6,7 @@ import hashOptions from "../helpers/options/hash";
 export default function appendHashes(file: Object) {
 
   file.content.hash = file.content.type === "gzip"
-    ? file.src.md5 + "GZ"
+    ? `${file.src.md5}GZ`
     : file.src.md5;
 
   file.headers.hash = hashOptions(file.headers.values);

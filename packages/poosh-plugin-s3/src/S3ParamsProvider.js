@@ -4,8 +4,7 @@ import forOwn from "lodash/forOwn";
 import joinUrl from "poosh-common/lib/url/join";
 import parseMs from "poosh-common/lib/options/parseMs";
 import RemoteStatus from "poosh-common/lib/file/RemoteStatus";
-import { HEADERS_TO_PARAMS_MAP } from "./helpers/convertion";
-import { FILE_REMOTE_TO_PARAMS_MAP } from "./helpers/convertion";
+import { HEADERS_TO_PARAMS_MAP, FILE_REMOTE_TO_PARAMS_MAP } from "./helpers/convertion";
 
 type RemoteOptions = {
   region: string,
@@ -34,14 +33,14 @@ const AS_IS_CONSTRUCTOR_OPTIONS = [
  */
 function appendParamsFromHeaders(params: Object, headers: Object): Object {
   if (!headers.values) {
-    return;
+    return undefined;
   }
 
   forOwn(headers.values, (value, key) => {
 
-    let paramKey = HEADERS_TO_PARAMS_MAP[key];
+    const paramKey = HEADERS_TO_PARAMS_MAP[key];
     if (!paramKey) {
-      //TODO: Dedicated error
+      // TODO: Dedicated error
       throw new Error(`File option "headers.${key}" is not supported by S3`);
     }
 
@@ -60,14 +59,14 @@ function appendParamsFromHeaders(params: Object, headers: Object): Object {
  */
 function appendParamsFromFileRemote(params: Object, remote: Object): Object {
   if (!remote.values) {
-    return;
+    return undefined;
   }
 
   forOwn(remote.values, (value, key) => {
 
-    let paramKey = FILE_REMOTE_TO_PARAMS_MAP[key];
+    const paramKey = FILE_REMOTE_TO_PARAMS_MAP[key];
     if (!paramKey) {
-      //TODO: Dedicated error
+      // TODO: Dedicated error
       throw new Error(`File option "remote.${key}" is not supported by S3`);
     }
 
@@ -90,8 +89,8 @@ export default class S3ParamsProvider {
    * @returns S3 constructor options.
    */
   getConstructorOptions(): Object {
-    let options = this._options;
-    let ret = pick(options, AS_IS_CONSTRUCTOR_OPTIONS);
+    const options = this._options;
+    const ret = pick(options, AS_IS_CONSTRUCTOR_OPTIONS);
 
     // Bucket is set at constructor level
     ret.params = { Bucket: options.bucket };
@@ -124,7 +123,7 @@ export default class S3ParamsProvider {
    * @returns Params.
    */
   getPutObjectParams(file: Object): Object {
-    let params = this.getParamsWithKey(file);
+    const params = this.getParamsWithKey(file);
     appendParamsFromHeaders(params, file.headers);
     params.Body = file.content.buffer;
     appendParamsFromFileRemote(params, file.remote);
@@ -149,8 +148,8 @@ export default class S3ParamsProvider {
    */
   getDeleteObjectsParams(files: Array<Object>): Object {
     return {
-      Delete: {
-        Objects: files.map(file => this.getParamsWithKey(file))
+      Delete : {
+        Objects : files.map(file => this.getParamsWithKey(file))
       }
     };
   }
@@ -162,10 +161,10 @@ export default class S3ParamsProvider {
    * @returns Params.
    */
   getSelfCopyObjectParams(file: Object): Object {
-    let params = this.getParamsWithKey(file);
+    const params = this.getParamsWithKey(file);
 
     // Self copy
-    params.CopySource = this._options.bucket + "/" + params.Key;
+    params.CopySource = `${this._options.bucket}/${params.Key}`;
 
     // Only append header params if something has changed
     if (file.dest.statusDetails.headers === RemoteStatus.Different) {
@@ -197,7 +196,8 @@ export default class S3ParamsProvider {
    */
   getParamsWithKey(file: Object): Object {
     return {
-      Key: joinUrl(this._options.basePath, file.dest.relative)
+      Key : joinUrl(this._options.basePath, file.dest.relative)
     };
   }
+
 }

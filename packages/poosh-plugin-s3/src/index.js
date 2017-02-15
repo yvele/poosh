@@ -9,13 +9,13 @@ import parseRemoteOptions from "./options/parseRemoteOptions";
  */
 export function init() {
   return {
-    remote: [{
-      id: "s3",
-      getRemoteClient: options => new RemoteClient(normalizeOptions(options))
+    remote : [{
+      id : "s3",
+      getRemoteClient : options => new RemoteClient(normalizeOptions(options))
     }],
-    remoteString: [{
-      id: "s3",
-      parse: parseRemoteOptions
+    remoteString : [{
+      id : "s3",
+      parse : parseRemoteOptions
     }]
   };
 }

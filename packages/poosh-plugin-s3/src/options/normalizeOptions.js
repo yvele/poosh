@@ -9,21 +9,21 @@ const stringTrim = Joi.string().trim();
 const DEFAULT_TIMEOUT = 180000;
 
 const OPTIONS_SCHEMA = Joi.object().keys({
-  type: Joi.string().valid("s3"),
+  type : Joi.string().valid("s3"),
 
-  region: stringTrim,
-  bucket: stringTrim,
-  basePath: stringTrim,
+  region : stringTrim,
+  bucket : stringTrim,
+  basePath : stringTrim,
 
-  absolute: stringTrim,
+  absolute : stringTrim,
 
-  accessKeyId: stringTrim,
-  secretAccessKey: stringTrim,
+  accessKeyId : stringTrim,
+  secretAccessKey : stringTrim,
 
-  maxRetries: Joi.number().integer().positive(),
+  maxRetries : Joi.number().integer().positive(),
 
-  proxy: stringTrim.uri(),
-  timeout: [stringTrim, Joi.number().integer().positive()]
+  proxy : stringTrim.uri(),
+  timeout : [stringTrim, Joi.number().integer().positive()]
 });
 
 const JOI_OPTIONS = {
@@ -42,7 +42,7 @@ export default function normalizeOptions(options: Object) {
 
   options = Object.assign({}, options);
 
-  let error = Joi.validate(options, OPTIONS_SCHEMA, JOI_OPTIONS).error;
+  const error = Joi.validate(options, OPTIONS_SCHEMA, JOI_OPTIONS).error;
   if (error) {
     throw new PooshError(`Invalid S3 options: ${error}`);
   }
@@ -54,7 +54,7 @@ export default function normalizeOptions(options: Object) {
   }
 
   if (options.absolute) {
-    let parsed = parseRemoteOptions(options.absolute);
+    const parsed = parseRemoteOptions(options.absolute);
     if (!parsed) {
       throw new PooshError(
         `Invalid S3 options: absolute value "${options.absolute}" cannot be parsed`

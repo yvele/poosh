@@ -20,8 +20,8 @@ function parseRemoteCache(val: string, mode: string): Object {
   }
 
   return {
-    remote: val === "remote",
-    cache: val === "cache"
+    remote : val === "remote",
+    cache : val === "cache"
   };
 }
 
@@ -61,7 +61,7 @@ export function parseArgs(args: Array): Object {
     return { subcommand: defaultCommand };
   }
 
-  let subcommand = args[0];
+  const subcommand = args[0];
   if (commands.indexOf(subcommand) === -1) {
     error(
       `error: '${subcommand}' is not a valid command.`,

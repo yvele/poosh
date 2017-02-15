@@ -17,13 +17,9 @@ function getQuery(file: Object): string {
 export default class LocalCache {
 
   constructor(fileName: string) {
-    if (!fileName) {
-      fileName = DS_DEFAULT_PERSISTANCE_FILE;
-    }
-
     this._db = new Datastore({
-      filename: fileName,
-      autoload: true
+      filename : fileName || DS_DEFAULT_PERSISTANCE_FILE,
+      autoload : true
     });
   }
 
@@ -34,10 +30,10 @@ export default class LocalCache {
    * @returns Hashes (content, headers and remote).
    */
   async get(file: Object): ?Object {
-    let doc = await this._db.findOneAsync(getQuery(file));
-    if (doc) {
-      return { content : doc.c, headers : doc.h, remote  : doc.r };
-    }
+    const doc = await this._db.findOneAsync(getQuery(file));
+    return doc
+      ? { content: doc.c, headers: doc.h, remote: doc.r }
+      : undefined;
   }
 
   /**
@@ -46,11 +42,11 @@ export default class LocalCache {
   async add(file: Object) {
 
     // Note: Field names cannot begin by '$' or contain a '.'
-    let update = {
-      $set: {
-        c: file.content.hash,
-        h: file.headers.hash,
-        r: file.remote.hash
+    const update = {
+      $set : {
+        c : file.content.hash,
+        h : file.headers.hash,
+        r : file.remote.hash
       }
     };
 
@@ -71,8 +67,9 @@ export default class LocalCache {
    * @private
    */
   async remove(files: Array<Object>): number {
-    return await this._db.removeAsync(
+    return this._db.removeAsync(
       { $or: files.map(getQuery) },
       { multi: true });
   }
+
 }

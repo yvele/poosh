@@ -1,3 +1,3 @@
-describe("npm", function() {
+describe("npm", () => {
   require("./getGlobalPath");
 });

@@ -1,7 +1,7 @@
 import Promise from "bluebird";
 
 async function processGroup(group, iteratee, concurrency) {
-  let mapper = async ([file, options], index) => {
+  const mapper = async ([file, options], index) => {
 
     // Release the reference ASAP to avoid unnecessary memory pressure
     group[index] = undefined;
@@ -29,7 +29,7 @@ export default async function shiftTuples(tuples, iteratee, concurrency: number)
 
   for (let tuple = tuples.shift(); tuple; tuple = tuples.shift()) {
 
-    let priority = tuple[0].priority;
+    const priority = tuple[0].priority;
     if (priority !== groupPriority) {
 
       await processGroup(group, iteratee, concurrency);

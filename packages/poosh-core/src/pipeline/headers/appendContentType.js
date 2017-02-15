@@ -8,8 +8,8 @@ export default function appendContentType(file) {
   }
 
   // Get directives from file extension
-  let mimeType = mime.lookup(file.src.relative);
-  let charset = mime.charsets.lookup(mimeType);
+  const mimeType = mime.lookup(file.src.relative);
+  const charset = mime.charsets.lookup(mimeType);
 
   let contentType;
   if (charset) {

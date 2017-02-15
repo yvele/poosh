@@ -3,7 +3,7 @@
  */
 export default function appendHeaderContentLength(file: Object) {
 
-  let headerValues = file.headers.values;
+  const headerValues = file.headers.values;
 
   if (headerValues["content-length"]) {
     // Header has already been added

@@ -10,7 +10,7 @@ const ID = "header-location-content";
  */
 export function init() {
   return {
-    pipe: [{ id: ID, process }],
-    validation: [{ id: ID, mutateJoiSchema }]
+    pipe : [{ id: ID, process }],
+    validation : [{ id: ID, mutateJoiSchema }]
   };
 }

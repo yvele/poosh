@@ -1,3 +1,3 @@
-describe("array", function() {
+describe("array", () => {
   require("./pushNonFalsy");
 });

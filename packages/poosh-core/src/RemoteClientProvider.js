@@ -10,17 +10,17 @@ const JOI_OPTIONS = {
 };
 
 const remotePluginSchema = Joi.object({
-  getStatus: Joi.func().required(),
-  upload: Joi.func().required(),
-  list: Joi.func().required(),
-  pushDelete: Joi.func().required(),
-  flushDelete: Joi.func().required(),
-  getBaseDestination: Joi.func().required(),
-  normalizeFileRemoteOptions: Joi.func().required()
+  getStatus : Joi.func().required(),
+  upload : Joi.func().required(),
+  list : Joi.func().required(),
+  pushDelete : Joi.func().required(),
+  flushDelete : Joi.func().required(),
+  getBaseDestination : Joi.func().required(),
+  normalizeFileRemoteOptions : Joi.func().required()
 }).unknown();
 
 function validateRemoteClient(remoteClient: Object, plugin: Object) {
-  let error = Joi.validate(remoteClient, remotePluginSchema, JOI_OPTIONS).error;
+  const error = Joi.validate(remoteClient, remotePluginSchema, JOI_OPTIONS).error;
   if (error) {
     throw new PooshError(
       `Plugin "${plugin.id}" is invalid: getRemoteClient returned an invalid object ${error}`
@@ -37,19 +37,19 @@ function validateRemoteClient(remoteClient: Object, plugin: Object) {
  * @private
  */
 function getMap(options: Object): { [key: string]: Object } {
-  let readonly = options.readonly.remote;
-  return mapValues(options.remote, remoteOptions => {
+  const readonly = options.readonly.remote;
+  return mapValues(options.remote, (remoteOptions) => {
 
     // Find first remote plugin that matches the remote type
-    let type = remoteOptions.type;
-    let plugin = options.plugins.remote[type];
+    const type = remoteOptions.type;
+    const plugin = options.plugins.remote[type];
     if (!plugin) {
       throw new PooshError(
         `No remote plugin found that matches remote type "${type}"`
       );
     }
 
-    let remoteClient = plugin.getRemoteClient(remoteOptions);
+    const remoteClient = plugin.getRemoteClient(remoteOptions);
     validateRemoteClient(remoteClient, plugin);
 
     return readonly ? new RemoteClientWrapper(remoteClient) : remoteClient;
@@ -73,15 +73,10 @@ export default class RemoteClientProvider {
    * @returns The remote client instance or null if not found.
    */
   get(id: string): Object {
-    if (!id) {
-      id = "default";
-    }
-
-    let remoteClient = this._map[id];
+    const key = id || "default";
+    const remoteClient = this._map[key];
     if (!remoteClient) {
-      throw new PooshError(
-        `No remote options found that matches remote ID "${id}"`
-      );
+      throw new PooshError(`No remote options found that matches remote ID "${key}"`);
     }
 
     return remoteClient;
@@ -93,4 +88,5 @@ export default class RemoteClientProvider {
   getAll(): Array<Object> {
     return Object.values(this._map);
   }
+
 }

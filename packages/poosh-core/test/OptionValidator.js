@@ -20,7 +20,7 @@ describe("OptionValidator", () => {
         baseDir : "./deploy",
         each    : [{ match: "*.html" }],
         remote  : {
-          "default": {
+          default : {
             type : "s3",
             foo  : "bar"
           }

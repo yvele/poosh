@@ -6,8 +6,8 @@ export const HEADERS_TO_PARAMS_MAP = {
   "content-length"      : "ContentLength",
   "content-md5"         : "ContentMD5",
   "content-type"        : "ContentType",
-  "expires"             : "Expires",
-  "location"            : "WebsiteRedirectLocation"
+  expires             : "Expires",
+  location            : "WebsiteRedirectLocation"
 };
 
 export const FILE_REMOTE_TO_PARAMS_MAP = {

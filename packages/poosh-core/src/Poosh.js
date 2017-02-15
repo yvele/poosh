@@ -19,11 +19,12 @@ import Pipeline from "./pipeline/Pipeline";
  * @private
  */
 function getFileRemoteId(options: Object): string {
-  if (options.remote) {
-    return typeof options.remote == "string"
-      ? options.remote
-      : options.remote.id;
+  const { remote } = options;
+  if (!remote) {
+    return undefined;
   }
+
+  return typeof remote === "string" ? remote : remote.id;
 }
 
 /**
@@ -33,8 +34,8 @@ function getFileRemoteId(options: Object): string {
  * @private
  */
 function getFileRemoteClient(options: Object): Object {
-  let remoteId = getFileRemoteId(options) || "default";
-  let remoteClient = this._remoteClientProvider.get(remoteId);
+  const remoteId = getFileRemoteId(options) || "default";
+  const remoteClient = this._remoteClientProvider.get(remoteId);
   if (!remoteClient) {
     throw new PooshError(
       `Unable to found remote options associated with ID "${remoteId}"`
@@ -77,7 +78,9 @@ function onDeleted(files: Array<Object>) {
   }
 
   this._cache.remove(files); // No await on purpose
-  files.forEach(file => file.status = ActionStatus.Deleted);
+  files.forEach((file) => {
+    file.status = ActionStatus.Deleted;
+  });
   this::emitProgress("delete", files, 0, 1);
 }
 
@@ -92,7 +95,7 @@ function onDeleted(files: Array<Object>) {
 async function processFile(file: Object, options: Object) {
 
   // 0. Get remote client
-  let remoteClient = this::getFileRemoteClient(options);
+  const remoteClient = this::getFileRemoteClient(options);
 
   // 1. Pipeline processing (basic informations + pipe plugins)
   await this._pipeline.processFile(file, options, remoteClient);
@@ -109,7 +112,7 @@ async function processFile(file: Object, options: Object) {
 
   // 4. Remote status
   if (!this._options.force.remote) {
-    let status = await remoteClient.getStatus(file);
+    const status = await remoteClient.getStatus(file);
     file.dest.status = status.status;
     file.dest.statusDetails = status.statusDetails;
   }
@@ -140,17 +143,20 @@ async function processFile(file: Object, options: Object) {
 async function deleteUnprocessedFiles(processedDestinations: Set<string>) {
   this::emitProgress("delete", null, 0, 1);
 
-  let remoteClients = this._remoteClientProvider.getAll();
-  for (let remoteClient of remoteClients) {
-    await remoteClient.list(async file => {
+  const remoteClients = this._remoteClientProvider.getAll();
+  // eslint-disable-next-line no-restricted-syntax
+  for (const remoteClient of remoteClients) {
+    // eslint-disable-next-line no-await-in-loop
+    await remoteClient.list(async (file) => {
 
       if (!processedDestinations.has(file.dest.absolute)) {
-        let deleted = await remoteClient.pushDelete(file);
+        // eslint-disable-next-line no-await-in-loop
+        const deleted = await remoteClient.pushDelete(file);
         this::onDeleted(deleted);
       }
     });
 
-    let deleted = await remoteClient.flushDelete();
+    const deleted = await remoteClient.flushDelete();
     this::onDeleted(deleted);
   }
 
@@ -166,14 +172,14 @@ async function deleteUnprocessedFiles(processedDestinations: Set<string>) {
 async function uploadCore(): Set {
 
   // 1. Get and order source files
-  let tuples = await this._fileProvider.getSorted(this._options.baseDir);
-  let total = tuples.length;
+  const tuples = await this._fileProvider.getSorted(this._options.baseDir);
+  const total = tuples.length;
 
   // 2. Upload files
   this::emitProgress("match", null, 0, total);
 
   // 3. Processing
-  let processedDestinations = new Set();
+  const processedDestinations = new Set();
 
   let current = 0;
   await shiftTuples(tuples, async (file, options) => {
@@ -222,8 +228,9 @@ export default class Poosh extends EventEmitter {
    * @fires Poosh#progress
    */
   async sync() {
-    let processedDestinations = await this::uploadCore();
+    const processedDestinations = await this::uploadCore();
     await this::deleteUnprocessedFiles(processedDestinations);
     this._cache.flush();
   }
+
 }

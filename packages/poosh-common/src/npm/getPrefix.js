@@ -11,7 +11,7 @@ let prefixCache;
 export default function getPrefix(): string {
   if (!prefixCache) {
     prefixCache = execSync("npm config get prefix", {
-      encoding: "utf-8"
+      encoding : "utf-8"
     }).trim();
   }
 

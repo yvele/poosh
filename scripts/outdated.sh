@@ -7,7 +7,7 @@ echo ""
 echo "----> ./poosh"
 npm outdated --long
 
-for D in ./packages/poosh*/; do
+for D in ./packages/*/; do
 
   echo ""
   echo "----> ${D}"
