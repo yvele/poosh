@@ -12,12 +12,12 @@ function initCommander() {
     "comma separated plugins",
     argv.parseList);
 
-  commander.option("-r, --readonly [what]",
+  commander.option("-r, --read-only [what]",
     "read-only mode, can be remote, cache or both (default)",
     argv.parseReadOnly);
 
   commander.option("-n, --dry-run",
-    "perform a trial run with no changes made (same as --readonly both)");
+    "perform a trial run with no changes made (same as --read-only both)");
 
   commander.option("-f, --force [what]",
     "force mode, can be remote, cache or both (default)",
@@ -42,7 +42,7 @@ function initCommander() {
       + "\n    sync [options]"
       + "\n\n"
       + "  Examples:\n"
-      + `\n    $ ${NAME} --readonly remote --force cache`
+      + `\n    $ ${NAME} --read-only remote --force cache`
       + `\n    $ ${NAME} sync -v`
     );
   });
@@ -61,11 +61,11 @@ export default async function main() {
   let optionManager = new OptionManager()
     .addConfigFile()
     .addOptions({ plugins: commander.plugins })
-    .addOptions(commander.readonly ? { readonly: commander.readonly } : null)
+    .addOptions(commander.readOnly ? { readonly: commander.readOnly } : null)
     .addOptions(commander.force ? { force: commander.force } : null);
 
   if (commander.dryRun) {
-    // May override readonly
+    // May override readOnly
     optionManager = optionManager.addOptions({
       readonly : { remote: true, cache: true }
     });

@@ -19,8 +19,8 @@ Options:
 
   -h, --help              output usage information
   -w, --plugins [string]  comma separated plugins
-  -r, --readonly [what]   read-only mode, can be remote, cache or both (default)
-  -n, --dry-run           perform a trial run with no changes made (same as --readonly both)
+  -r, --read-only [what]   read-only mode, can be remote, cache or both (default)
+  -n, --dry-run           perform a trial run with no changes made (same as --read-only both)
   -f, --force [what]      force mode, can be remote, cache or both (default)
   -v, --verbose           get more detailed output on every files
   -q, --quiet             quiet operations
@@ -28,6 +28,6 @@ Options:
 
 Examples:
 
-  $ poosh --readonly remote --force cache
+  $ poosh --read-only remote --force cache
   $ poosh sync -vv
 ```

@@ -26,7 +26,7 @@ function parseRemoteCache(val: string, mode: string): Object {
 }
 
 export function parseReadOnly(val: string): Object {
-  return parseRemoteCache(val, "readonly");
+  return parseRemoteCache(val, "read-only");
 }
 
 export function parseForce(val: string): Object {

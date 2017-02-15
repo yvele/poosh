@@ -208,7 +208,7 @@ This is useful to poosh to detect distinctive local changes in either file conte
 
 ### Simulation
 
-Using the [CLI][poosh-cli] `--dry-run` or `--readonly` options,
+Using the [CLI][poosh-cli] `--dry-run` or `--read-only` options,
 no changes will be maid while output still showing potential changes:
 
 ```shell
