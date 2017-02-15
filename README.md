@@ -233,7 +233,7 @@ or
 
 ### Each
 
-All "each" items are applied to files **in order**. Same options are overriden by the last one.
+All "each" items are applied to files **in order**. Same options are overridden by the last one.
 
 | Option       | Default     | Description
 | ------------ | ----------- | -------------
