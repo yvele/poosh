@@ -129,7 +129,8 @@ HTTP headers can be configured for each files:
       "cache-control": {
         maxAge      : "60 days",
         cacheable   : "public",
-        noTransform : true
+        noTransform : true,
+        immutable   : true
       },
       "content-disposition" : "attachment; filename=\"foo.html\"",
       "content-encoding"    : "utf-8",
