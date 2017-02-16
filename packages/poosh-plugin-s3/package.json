@@ -1,6 +1,6 @@
 {
   "name": "poosh-plugin-s3",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Poosh plugin that publishes files to AWS S3",
   "author": "Merlicco Yves",
   "keywords": [
@@ -27,6 +27,6 @@
     "bluebird": "^3.4.7",
     "joi": "^10.2.0",
     "lodash": "^4.17.4",
-    "poosh-common": "^1.1.0"
+    "poosh-common": "^2.0.0"
   }
 }

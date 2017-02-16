@@ -1,6 +1,6 @@
 {
   "name": "poosh",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Poosh plugin that publishes files to AWS S3",
   "author": "Merlicco Yves",
   "keywords": [
