@@ -12,4 +12,4 @@ npm run clean:build
 npm run build
 
 # 3. Publication (will bumb all packages versions + dependencies)
-lerna publish
+lerna publish --skip-git
