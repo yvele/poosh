@@ -1,25 +1,5 @@
 import micromatch from "micromatch";
-
-/**
- * Check that a file name matches a glob pattern.
- *
- * @param fileName File name to check.
- * @param pattern Glob pattern.
- * @returns True if the file name pattern the pattern. Otherwise false.
- * @this GlobMatcher
- * @private
- */
-function checkSingle(fileName: string, pattern: string): boolean {
-
-  // Cache the micropatch "pattern parsing"
-  let isMatch = this._cache[pattern];
-  if (!isMatch) {
-    isMatch = micromatch.matcher(pattern);
-    this._cache[pattern] = isMatch;
-  }
-
-  return isMatch(fileName);
-}
+import { isNullOrUndefined } from "poosh-common/lib/lang";
 
 /**
  * A glob matcher with cache.
@@ -27,20 +7,64 @@ function checkSingle(fileName: string, pattern: string): boolean {
 export default class GlobMatcher {
 
   constructor() {
-    this._cache = {};
+    /** @private */
+    this.cache = {};
   }
 
   /**
-   * Check that a file name matches some glob patterns.
+   * Check that a file name matches a glob pattern.
    *
-   * @param fileName File name to check.
-   * @param patterns Glob patterns.
-   * @returns True if the file name matches all the provided patterns. Otherwise false.
+   * @param {string} fileName The file path to test
+   * @param {string} pattern A single glob pattern
+   * @returns {boolean} True if the file path matches given pattern
    */
-  check(fileName: string, patterns: Array<string> | string): boolean {
+  matchSingle(fileName, pattern) {
+    if (!pattern) {
+      return false;
+    }
+
+    // Cache the micropatch "pattern parsing"
+    let isMatch = this.cache[pattern];
+    if (!isMatch) {
+      isMatch = micromatch.matcher(pattern);
+      this.cache[pattern] = isMatch;
+    }
+
+    return isMatch(fileName);
+  }
+
+  /**
+   * Returns true if a file path matches every given patterns
+   *
+   * @param {string} fileName The file path to test
+   * @param {string|Array} patterns One or more glob patterns
+   * @returns {boolean} True if the file path matches every given patterns
+   */
+  matchEvery(fileName, patterns) {
+    if (isNullOrUndefined(patterns)) {
+      return false;
+    }
+
     return Array.isArray(patterns)
-      ? patterns.every(pattern => this::checkSingle(fileName, pattern))
-      : this::checkSingle(fileName, patterns);
+      ? patterns.every(pattern => this.matchSingle(fileName, pattern))
+      : this.matchSingle(fileName, patterns);
+  }
+
+  /**
+   * Returns true if a file path matches any of the given patterns
+   *
+   * @param {string} fileName The file path to test
+   * @param {string|Array} patterns One or more glob patterns
+   * @returns {boolean} True if the file path matches any of the given patterns
+   */
+  matchAny(fileName, patterns) {
+    if (isNullOrUndefined(patterns)) {
+      return false;
+    }
+
+    return Array.isArray(patterns)
+      ? patterns.some(pattern => this.matchSingle(fileName, pattern))
+      : this.matchSingle(fileName, patterns);
   }
 
 }

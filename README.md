@@ -231,6 +231,7 @@ or
 | remote       | `null`  | The remote client or a key/value map of remote clients to use for processing files. See your remote plugin documentation for more information (e.g. [S3 Plugin][poosh-plugin-s3]).
 | concurrency  | `3`     | File processing concurrency.
 | each         | `[]`    | List of items used to select and process local files. Available options are described in the [each section](#each).
+| ignore       | `[]`    | List of [glob] strings identifying files to totally ignore (prevent files to be created, updated or deleted).
 
 ### Each
 

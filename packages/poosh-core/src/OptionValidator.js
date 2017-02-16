@@ -75,15 +75,27 @@ function createSchema(): Object {
       file      : stringTrim
     }).unknown(),
 
+    // For each local files that matches
     each : Joi.array().items(Joi.object({
-      match    : [stringTrim, Joi.array().items(stringTrim)],
+      match    : [
+        stringTrim,
+        Joi.array().items(stringTrim)
+      ],
       priority : Joi.number().allow(null),
       gzip     : Joi.boolean(),
       headers  : headersSchema,
-      remote   : [stringTrimNull, Joi.object({
-        id : stringTrim
-      }).unknown()]
-    })).required()
+      remote   : [
+        stringTrimNull,
+        Joi.object({ id: stringTrim }).unknown()
+      ]
+    })).required(),
+
+    // Ignore locations where files cannot be added, updated or deleted
+    ignore : Joi.alternatives().try(
+      stringTrim,
+      Joi.array().items(stringTrim)
+    )
+
   }).with("plugins", "baseDir", "remote", "each");
 
   return schema;

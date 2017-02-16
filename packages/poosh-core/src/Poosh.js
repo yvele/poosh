@@ -3,6 +3,7 @@ import PooshError from "poosh-common/lib/errors/PooshError";
 import RemoteStatus from "poosh-common/lib/file/RemoteStatus";
 import LocalStatus from "poosh-common/lib/file/LocalStatus";
 import ActionStatus from "poosh-common/lib/file/ActionStatus";
+import GlobMatcher from "./helpers/GlobMatcher";
 import FileProvider from "./FileProvider";
 import RemoteClientProvider from "./RemoteClientProvider";
 import LocalCache from "./LocalCache";
@@ -143,17 +144,28 @@ async function processFile(file: Object, options: Object) {
 async function deleteUnprocessedFiles(processedDestinations: Set<string>) {
   this::emitProgress("delete", null, 0, 1);
 
-  const remoteClients = this._remoteClientProvider.getAll();
   // eslint-disable-next-line no-restricted-syntax
-  for (const remoteClient of remoteClients) {
+  for (const remoteClient of this._remoteClientProvider.getAll()) {
     // eslint-disable-next-line no-await-in-loop
     await remoteClient.list(async (file) => {
 
-      if (!processedDestinations.has(file.dest.absolute)) {
-        // eslint-disable-next-line no-await-in-loop
-        const deleted = await remoteClient.pushDelete(file);
-        this::onDeleted(deleted);
+      // 0. Ignore
+      const ignore = this._matcher.matchAny(file.dest.relative, this._options.ignore);
+      if (ignore) {
+        return; // Totally ignore
       }
+
+      // 1. Has been processed
+      const processed = processedDestinations.has(file.dest.absolute);
+      if (processed) {
+        return;
+      }
+
+      // 2. Deletion
+      // eslint-disable-next-line no-await-in-loop
+      const deleted = await remoteClient.pushDelete(file);
+      this::onDeleted(deleted);
+
     });
 
     const deleted = await remoteClient.flushDelete();
@@ -201,6 +213,8 @@ export default class Poosh extends EventEmitter {
     super();
 
     this._options = options;
+
+    this._matcher = new GlobMatcher();
     this._fileProvider = new FileProvider(options);
     this._remoteClientProvider = new RemoteClientProvider(options);
 

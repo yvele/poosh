@@ -5,30 +5,43 @@ import GlobMatcher from "./helpers/GlobMatcher";
 export default class FileOptionsProvider {
 
   constructor(options) {
-    this._options = options;
-    this._matcher = new GlobMatcher();
+    this.options = options;
+    this.matcher = new GlobMatcher();
   }
 
   /**
-   * @param fileName Relative file path.
-   * @returns merged options that matches.
+   * Get matching options for a specific file.
+   *
+   * @param {string} fileName Relative file path.
+   * @returns {Object} Matching file options
    */
-  getOptions(fileName: string): Object {
+  getOptions(fileName) {
+    const { options, matcher } = this;
 
-    const optionsList = this._options.each
-      .filter(item => isNullOrUndefined(item.match) || this._matcher.check(fileName, item.match));
+    // 0. Ignore
+    if (matcher.matchAny(fileName, options.ignore)) {
+      return undefined; // Totally ignore
+    }
 
+    // 1. Get applicable options for this file (no match defined, and options that matches)
+    const optionsList = options.each.filter(
+      item => isNullOrUndefined(item.match) || matcher.matchEvery(fileName, item.match)
+    );
+
+    // 2. Matching
     // No pattern means that options are applicable but does not count as a match
     const matches = optionsList.filter(item => !isNullOrUndefined(item.match)).length;
     if (matches < 1) {
       return undefined; // No matches
     }
 
-    // Merge applicable options
-    const options = merge({}, ...optionsList);
+    // 3. Merge applicable options
+    const fileOptions = merge({}, ...optionsList);
 
-    Reflect.deleteProperty(options, "match");
-    return options;
+    // 4. cleanup
+    Reflect.deleteProperty(fileOptions, "match");
+
+    return fileOptions;
   }
 
 }

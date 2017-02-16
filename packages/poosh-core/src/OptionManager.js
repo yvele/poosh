@@ -5,6 +5,7 @@ import findup from "findup-sync";
 import PooshError from "poosh-common/lib/errors/PooshError";
 import merge from "poosh-common/lib/options/merge";
 import pushNonFalsy from "poosh-common/lib/array/pushNonFalsy";
+import { isNullOrUndefined } from "poosh-common/lib/lang";
 import OptionValidator from "./OptionValidator";
 import PluginCollection from "./helpers/options/PluginCollection";
 
@@ -60,6 +61,15 @@ function normalizeRemote(value: Object|string, remoteStringPlugins: Array): Obje
   }
 
   return value;
+}
+
+function normalizeIgnore(value) {
+  if (isNullOrUndefined(value)) {
+    return undefined;
+  }
+
+  // Alway returns an array
+  return Array.isArray(value) ? value : [value];
 }
 
 export default class OptionManager {
@@ -163,6 +173,7 @@ export default class OptionManager {
     options.readonly = normalizeCacheRemote(options.readonly);
     options.force = normalizeCacheRemote(options.force);
     options.remote = normalizeRemote(options.remote, options.plugins.remoteString);
+    options.ignore = normalizeIgnore(options.ignore);
 
     return options;
   }
