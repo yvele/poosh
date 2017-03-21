@@ -23,7 +23,7 @@
     "node": ">=v5.12.0"
   },
   "dependencies": {
-    "bluebird": "^3.4.7",
+    "bluebird": "^3.5.0",
     "crc": "^3.4.4",
     "findup-sync": "^0.4.3",
     "glob": "^7.1.1",
@@ -32,7 +32,7 @@
     "lodash": "^4.17.4",
     "micromatch": "^2.3.10",
     "mime": "^1.3.4",
-    "ms": "^0.7.2",
+    "ms": "^1.0.0",
     "nedb": "^1.8.0",
     "poosh-common": "^2.0.0"
   }

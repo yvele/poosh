@@ -37,26 +37,26 @@
     "npm": ">=v4.1.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.22.2",
-    "babel-eslint": "^7.1.1",
+    "babel-cli": "^6.24.0",
+    "babel-eslint": "^7.2.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-flow-comments": "^6.3.19",
     "babel-plugin-istanbul": "^4.0.0",
     "babel-plugin-transform-builtin-extend": "^1.1.0",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-function-bind": "^6.22.0",
-    "babel-preset-env": "^1.1.8",
-    "babel-register": "^6.22.0",
-    "eslint": "^3.14.0",
-    "eslint-config-poosh": "^1.0.8",
-    "eslint-plugin-babel": "^4.0.1",
+    "babel-preset-env": "^1.2.2",
+    "babel-register": "^6.24.0",
+    "eslint": "^3.18.0",
+    "eslint-config-poosh": "^2.0.0",
+    "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-mocha": "^4.8.0",
-    "lerna": "2.0.0-beta.37",
+    "eslint-plugin-mocha": "^4.9.0",
+    "lerna": "2.0.0-beta.38",
     "mocha": "^3.2.0",
     "nyc": "^10.1.2",
     "rewire": "^2.5.2",
-    "should": "^11.1.2"
+    "should": "^11.2.1"
   },
   "nyc": {
     "reporter": [

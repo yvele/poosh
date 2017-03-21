@@ -23,8 +23,8 @@
     "node": ">=v5.12.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.7.27",
-    "bluebird": "^3.4.7",
+    "aws-sdk": "^2.29.0",
+    "bluebird": "^3.5.0",
     "joi": "^10.2.0",
     "lodash": "^4.17.4",
     "poosh-common": "^2.0.0"
