@@ -247,7 +247,7 @@ All "each" items are applied to files **in order**. Same options are overridden 
 
 ### Headers
 
-Options used to control file's HTTP headers.
+Options used to control file's [HTTP](https://www.scaler.com/topics/hypertext-transfer-protocol/) headers.
 
 <table>
   <tr>
